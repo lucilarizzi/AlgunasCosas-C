@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1525636178 source:c:\users\lucil\desktop\luloopemergency\llamados.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"llamados.h"
+
+1525635908 source:c:\users\lucil\desktop\luloopemergency\lib.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"lib.h"
+
+1525629833 c:\users\lucil\desktop\luloopemergency\socio.h
+
+1525636014 c:\users\lucil\desktop\luloopemergency\llamados.h
+	"socio.h"
+	"ambulancias.h"
+
+1525629833 c:\users\lucil\desktop\luloopemergency\ambulancias.h
+
+1525633517 c:\users\lucil\desktop\luloopemergency\lib.h
+	"ambulancias.h"
+	"socio.h"
+	"llamados.h"
+
+1525636185 source:c:\users\lucil\desktop\luloopemergency\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"socio.h"
+	"llamados.h"
+	"ambulancias.h"
+	"lib.h"
+
+1525629764 source:c:\users\lucil\desktop\luloopemergency\socio.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"socio.h"
+	"lib.h"
+
+1525629844 source:c:\users\lucil\desktop\luloopemergency\ambulancias.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"ambulancias.h"
+	"lib.h"
+
