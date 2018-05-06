@@ -99,7 +99,7 @@ void indiceEmpleados(eEmpleados usuarios[], int tamanio)
        if (i<3)
         {
         usuarios[i].idEmpleado=i+20;
-        strcpy(usuarios[i].nombre,"Empleado");
+        strcpy(usuarios[i].nombre,"luis");
         strcpy(usuarios[i].apellido ,"Prueba11");
         usuarios[i].status=1;
         }

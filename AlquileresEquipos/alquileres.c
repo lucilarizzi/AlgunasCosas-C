@@ -18,47 +18,32 @@
  */
 void indiceAlquiler(eAlquiler alquiler[], int tamanio)
 {
+    int auxClientes [10] ={10, 11, 10, 10, 11, 15, 14,10, 11, 16};
+    int auxEquipos[10] ={41,42, 41, 43, 41,41,42, 41, 43, 41};
+    int auxOperador [10] ={22,21,22,21,22,21,22,21,22,21};
+     int auxTiempoAlq [10] ={1,2,3,4,5,6,7,8,9,10};
+     int auxTiempoReal [10] ={1,2,3,4,5,6,7,8,9,10};
+
     int i;
     for (i=0 ; i<tamanio;i++)
     {
     strcpy(alquiler[i].status, "LIBRE");
      }
-
-    alquiler[0].idCliente =10;
-    alquiler[1].idCliente =10;
-    alquiler[2].idCliente =11;
-    alquiler[3].idCliente =10;
-    alquiler[4].idCliente =11;
-    alquiler[5].idCliente =15;
-
-    alquiler[0].idEquipo =41;
-    alquiler[1].idEquipo =41;
-    alquiler[2].idEquipo  =42;
-    alquiler[3].idEquipo =40;
-    alquiler[4].idEquipo =41;
-    alquiler[5].idEquipo  =42;
-
-    alquiler[0].idOperador =21;
-    alquiler[1].idOperador=22;
-    alquiler[2].idOperador=22;
-     alquiler[3].idOperador=22;
-    alquiler[4].idOperador=22;
-    alquiler[5].idOperador  =21;
-
-    alquiler[0].tiempoAlquiler=7;
-    alquiler[1].tiempoAlquiler=9;
-    alquiler[2].tiempoAlquiler =2;
-    alquiler[3].tiempoAlquiler=7;
-    alquiler[4].tiempoAlquiler=12;
-    alquiler[5].tiempoAlquiler =2;
-
-    for (i=0 ; i<6;i++)
+    for (i=0 ; i<10;i++)
     {
     alquiler[i].idAlquiler=i+1;
+    alquiler [i].idCliente= auxClientes[i];
+    alquiler [i].idEquipo= auxEquipos[i];
+    alquiler [i].idOperador= auxOperador[i];
+    alquiler [i].tiempoAlquiler= auxTiempoAlq[i];
+    alquiler [i].tiempoReal= auxTiempoReal[i]+2;
     strcpy(alquiler[i].status, "ALQUILADO");
+    }
+
    }
 
-}
+
+
 
 
 
@@ -329,3 +314,125 @@ void consultaMejorCliente(eAlquiler alquiler[], eClientes cliente[],eEmpleados o
 }
 
 
+/** \brief Compara los alquileres y calcula los equipo con mas usos
+ *
+ * \param estructura de alquileres
+ * \param estructura de equipos
+ * \param cantidad de alquileres
+  * \param cantidad de equipos
+ * \return flag
+ *
+ */
+void consultaEquipoMasAlquilado (eAlquiler alquiler [] ,eEquipo equiposs [] , int CantAlquileres  ,  int CantEquipos )
+{
+      int i;
+      int j;
+       int k;
+      int contador [CantEquipos] ;
+
+      int flag=0;
+      int max ;
+
+      for (i=0; i<CantEquipos; i++)
+      {
+          contador[i]=0;
+      }
+
+
+           for (i=0; i <CantAlquileres; i++) // recorro los alquileres realizados
+                {
+                  for (k=0; k<CantEquipos; k++) // recorro los equipos
+                        {
+                            if (alquiler[i].idEquipo== equiposs[k].idEquipo)
+                            {
+                            contador [k]++;
+                            }
+                        }
+                }
+
+              for (k=0; k<CantEquipos-1; k++) // recorro los equipos
+                        {
+                        if (max<=contador[k]|| k==0)
+                            {
+                           max= contador[k];
+                            flag=1;
+                            }
+                           }
+
+
+              printf("\n-------------los equipos mas alquilados son %d veces", max);
+              for (k=0; k<CantEquipos; k++) // recorro los equipos
+                        {
+                            if ( max==contador[k])
+                            {
+                            showOneEquip(equiposs[k]);
+                            }
+                        }
+
+
+
+}
+
+
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
+void promedioTiempoAlquiler(eAlquiler alquiler [] ,eEquipo equiposs [] , int CantAlquileres  ,  int CantEquipos )
+{
+      int i;
+      int j;
+       int k;
+      float contador [CantEquipos] ;
+      float acumulador [CantEquipos] ;
+      float promedio [CantEquipos];
+
+      int flag=0;
+      int max ;
+
+      for (i=0; i<CantEquipos; i++)
+      {
+          contador[i]=0;
+          acumulador[i]=0;
+      }
+
+
+           for (i=0; i <CantAlquileres; i++) // recorro los alquileres realizados
+                {
+                  for (k=0; k<CantEquipos; k++) // recorro los equipos
+                        {
+                            if (alquiler[i].idEquipo== equiposs[k].idEquipo)
+                            {
+                            contador [k]++;
+
+                            acumulador[k]=acumulador[k]+(alquiler [i].tiempoAlquiler-alquiler [i].tiempoReal) ;
+                            }
+                        }
+                }
+
+
+              for (k=0; k<CantEquipos; k++) // recorro los equipos
+                        {
+
+                          showOneEquip(equiposs[k]);
+
+                          if (contador[k]>0)
+                          {
+                             promedio [k] = acumulador [k] /contador [k];
+                              printf("\n---------------------------------El promedio de este equipos es %.2f", promedio [k]);
+
+                          }
+                          else
+                            {
+                            printf("\n------------------------------Equipo nunca alquilado");
+                            }
+
+
+                        }
+
+
+
+}

@@ -253,22 +253,15 @@ do{
                       consultaMejorCliente(alquiler, clientes,operadores,equiposs,CantAlquileres, CantClientes, CantOperadores,CantEquipos);
                       cleanScreen();
                       break;
-                  /* case 4:
-                        printf("\t Ingrese cuantos Operadores desea harcodear: \t");
-                        scanf("%d", &usuariosParaHard);
-                          if (usuariosParaHard>tamanio)
-                        {
-                            printf("\t Ingrese un numero inferior a %d: \t",tamanio);
-                            scanf("%d", &usuariosParaHard);
-                        }
-                        *flag=hardEquipo(equiposs, usuariosParaHard,tamanio, flag);
+                   case 4:
+                       consultaEquipoMasAlquilado (alquiler, equiposs, CantAlquileres, CantEquipos);
                         cleanScreen();
                         break;
-                    case 5:
-                        mostrarEquipos(equiposs, tamanio, auxflag);
+                  case 5:
+                        promedioTiempoAlquiler(alquiler, equiposs, CantAlquileres, CantEquipos) ;
                         cleanScreen();
                         break;
-                        */
+
 
                      case 0:
                         opcion=0;

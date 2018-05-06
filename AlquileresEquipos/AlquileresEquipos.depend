@@ -81,19 +81,19 @@
 
 1525549564 c:\users\lucil\desktop\funciones\alquileresequipos\equipo.h
 
-1525570332 c:\users\lucil\desktop\funciones\alquileresequipos\alquileres.h
+1525613463 c:\users\lucil\desktop\funciones\alquileresequipos\alquileres.h
 	"clientes.h"
 	"empleados.h"
 	"equipo.h"
 
-1525548189 source:c:\users\lucil\desktop\funciones\alquileresequipos\empleados.c
+1525612323 source:c:\users\lucil\desktop\funciones\alquileresequipos\empleados.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	"empleados.h"
 	"lib.h"
 
-1525572050 source:c:\users\lucil\desktop\funciones\alquileresequipos\lib.c
+1525614361 source:c:\users\lucil\desktop\funciones\alquileresequipos\lib.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -109,14 +109,14 @@
 	"lib.h"
 	"clientes.h"
 
-1525568992 source:c:\users\lucil\desktop\funciones\alquileresequipos\equipo.c
+1525612084 source:c:\users\lucil\desktop\funciones\alquileresequipos\equipo.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	"equipo.h"
 	"lib.h"
 
-1525572927 source:c:\users\lucil\desktop\funciones\alquileresequipos\alquileres.c
+1525614400 source:c:\users\lucil\desktop\funciones\alquileresequipos\alquileres.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>

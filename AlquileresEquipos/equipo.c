@@ -95,30 +95,79 @@ void indiceEquipos(eEquipo equipos[], int tamanio)
   for(i=0;i<10;i++)
     {
 
-       if (i<2)
+       if (i==0)
         {
         equipos[i].idEquipo=i+40;
         strcpy(equipos[i].tipo,"Amoladora");
         strcpy(equipos[i].marca,"Black & Decker");
         equipos[i].status=1;
         }
-         else if (i>2&& i <7)
+        if (i==1)
+        {
+        equipos[i].idEquipo=i+40;
+        strcpy(equipos[i].tipo,"Amoladora");
+        strcpy(equipos[i].marca,"LOLO");
+        equipos[i].status=1;
+        }
+        else if (i==2)
         {
         equipos[i].idEquipo=i+40;
         strcpy(equipos[i].tipo,"Mezcladora");
         strcpy(equipos[i].marca,"Lolo");
         equipos[i].status=1;
         }
+       else if (i==3)
+        {
+        equipos[i].idEquipo=i+40;
+        strcpy(equipos[i].tipo,"Mezcladora");
+        strcpy(equipos[i].marca,"Coco");
+        equipos[i].status=1;
+        }
 
-     else if (i>7&&i <10)
+       else if (i==4)
         {
         equipos[i].idEquipo=i+40;
         strcpy(equipos[i].tipo,"Taladro");
         strcpy(equipos[i].marca,"Amazonia");
         equipos[i].status=1;
         }
-    }
+       else if (i==5)
+        {
+        equipos[i].idEquipo=i+40;
+        strcpy(equipos[i].tipo,"Taladro");
+        strcpy(equipos[i].marca,"Alyssa");
+        equipos[i].status=1;
+        }
 
+     else if (i==6)
+        {
+        equipos[i].idEquipo=i+40;
+        strcpy(equipos[i].tipo,"Taladro");
+        strcpy(equipos[i].marca,"Alaska");
+        equipos[i].status=1;
+        }
+              else if (i==7)
+        {
+        equipos[i].idEquipo=i+40;
+        strcpy(equipos[i].tipo,"Taladro");
+        strcpy(equipos[i].marca,"DelRio");
+        equipos[i].status=1;
+        }
+       else if (i==8)
+        {
+        equipos[i].idEquipo=i+40;
+        strcpy(equipos[i].tipo,"Taladro");
+        strcpy(equipos[i].marca,"Jinx");
+        equipos[i].status=1;
+        }
+     else
+        {
+        equipos[i].idEquipo=i+40;
+        strcpy(equipos[i].tipo,"Mezcladora");
+        strcpy(equipos[i].marca,"Alaska");
+        equipos[i].status=1;
+        }
+        }
 
 }
 
