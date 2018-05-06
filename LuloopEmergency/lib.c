@@ -28,7 +28,7 @@ do{
     switch (opcion)
                 {
                     case 1:
-                        auxflag =altaCliente(socioss, tamanio, flag);
+                        auxflag =altaCliente(socioss, tamanio);
                         *flag=auxflag;
                         cleanScreen();
                         break;
@@ -75,12 +75,11 @@ do{
 
 /** \brief MENU DE ambulancias
  *
- * \param
- * \param
- * \return
+ * \param ESTRUCTURA de ambulancias
+ * \param CANT DE ambulancias
+ * \return SITUACION DE LA BASE
  *
  */
-
 void  menuAmbulancias(eAmbu ambuss[], int tamanio, int *flag )
 {
     int i;
@@ -122,9 +121,6 @@ do{
                         break;
                 }
  }while (opcion !=0);
-
-
-
 }
 
 
@@ -188,8 +184,12 @@ void cleanScreen (void)
 
 /** \brief MENU LLAMADAS
  *
- * \param
- * \param
+ * \param ESTRUCTURA de llamadas
+ * \param ESTRUCTURA de socios
+ * \param ESTRUCTURA de ambulancias
+ * \param CANT DE llamadas
+ * \param CANT DE socio
+ * \param CANT DE ambulancias
  * \return
  *
  */

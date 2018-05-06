@@ -36,10 +36,28 @@ void cleanScreen (void);
  * \return SITUACION DE LA BASE
  *
  */
-void  menuCliente(eSocio socioss[], int tamanio, int *flag );
+void  menuCliente(eSocio[], int, int *);
 
-void  menuAmbulancias(eAmbu [], int , int * );
+/** \brief MENU DE ambulancias
+ *
+ * \param ESTRUCTURA de ambulancias
+ * \param CANT DE ambulancias
+ * \return SITUACION DE LA BASE
+ *
+ */
+void  menuAmbulancias(eAmbu[], int , int * );
 
-void  menuLlamadas(eLlamados llama[],eSocio soci [],eAmbu ambulan[],int CantLlamadas, int CantSocios,int CantAmbulancias);
+/** \brief MENU LLAMADAS
+ *
+ * \param ESTRUCTURA de llamadas
+ * \param ESTRUCTURA de socios
+ * \param ESTRUCTURA de ambulancias
+ * \param CANT DE llamadas
+ * \param CANT DE socio
+ * \param CANT DE ambulancias
+ * \return
+ *
+ */
+void  menuLlamadas(eLlamados[], eSocio[], eAmbu[],int , int ,int );
 
 #endif

@@ -9,12 +9,12 @@
 
 /** \brief ALTA DE CLIENTE
  *
- * \param
- * \param
- * \return
+ * \param array de estrcutrad de socio
+ * \param tamaño del array
+ * \return numero de index
  *
  */
-int  altaCliente (eSocio users[], int tamanio, int flag)
+int  altaCliente (eSocio users[], int tamanio)
 {
     int dni;
     int seguir='s';
@@ -54,15 +54,13 @@ int  altaCliente (eSocio users[], int tamanio, int flag)
 
 }
 
-/** \brief
+/** \brief buscar el primer index vacion en la usuarios/cliente/socio
  *
- * \param
- * \param
- * \return
+ * \param array de estrcutrad de socio
+ * \param tamaño del array
+ * \return numero de index
  *
  */
-
-
 int searchIndexUsers ( eSocio status[], int tamanio)
 {
     int index=-1;
@@ -79,42 +77,39 @@ int searchIndexUsers ( eSocio status[], int tamanio)
 }
 
 
-/** \brief
+/** \brief lleva a CERO todo el indice de status de  la estrcutura usuario/cliente/socio
  *
- * \param
- * \param
+ * \param estructura de usuarios/cliente/socio
+ * \param tamanio total del array de usuarios/cliente/socio
  * \return
  *
  */
 void indiceSocio(eSocio usuarios[], int tamanio)
 {
-
     int i;
     for (i=0 ; i<tamanio;i++)
     {
     usuarios[i].status=0;
      }
-
-
 }
-/** \brief
+/** \brief Carga de Datos Inicial para poder operar
  *
- * \param
- * \param
+ * \param estructura de usuarios/cliente/socio
+ * \param tamanio total del array de usuarios/cliente/socio
  * \return
  *
  */
 void cargarSocios(eSocio usuarios[], int tamanio)
 {
     int i;
-  for(i=0;i<10;i++)
+  for(i=0;i<tamanio;i++)
     {
 
        if (i==0)
         {
         usuarios[i].idSocio=i+10;
         strcpy(usuarios[i].nombre,"Prueba");
-        strcpy(usuarios[i].apellido ,"Rizzi");
+        strcpy(usuarios[i].apellido ,"Usuario");
         usuarios[i].dni=30887699-i;
         usuarios[i].edad =35+i;
         usuarios[i].status=1;
@@ -125,6 +120,7 @@ void cargarSocios(eSocio usuarios[], int tamanio)
         usuarios[i].idSocio=i+10;
         strcpy(usuarios[i].nombre,"Lucila");
         strcpy(usuarios[i].apellido ,"Lopez");
+        usuarios[i].dni=30887699-i;
         usuarios[i].edad =35+i;
         usuarios[i].status=1;
         }
@@ -133,6 +129,7 @@ void cargarSocios(eSocio usuarios[], int tamanio)
         usuarios[i].idSocio=i+10;
         strcpy(usuarios[i].nombre,"Ana");
         strcpy(usuarios[i].apellido,"Gomez");
+        usuarios[i].dni=30887699-i;
         usuarios[i].edad =35+i;
         usuarios[i].status=1;
         }
@@ -142,10 +139,9 @@ void cargarSocios(eSocio usuarios[], int tamanio)
 }
 
 
-/** \brief mostrar 1 datos de 1 clientes
+/** \brief mostrar 1 datos de 1 usuario/socio/cliente
  *
- * \param
- * \param
+ * \param  un punto de la estrcutura de usuario/socio/cliente
  * \return
  *
  */
@@ -155,10 +151,10 @@ void cargarSocios(eSocio usuarios[], int tamanio)
 }
 
 
-/** \brief
+/** \brief mostrar listado de usuario/socio/cliente
  *
- * \param
- * \param
+ * \param  array estrcutura de usuario/socio/cliente
+ * \param  cantidad maxima de usuario/socio/cliente
  * \return
  *
  */
@@ -177,14 +173,14 @@ void cargarSocios(eSocio usuarios[], int tamanio)
  }
 
 
- /** \brief
-  *
-  * \param
-  * \param
-  * \return
-  *
-  */
-
+ /** \brief mostrar listado de usuario/socio/cliente
+ *
+ * \param  array estrcutura de usuario/socio/cliente
+ * \param  cantidad maxima de usuario/socio/cliente
+  * \param  flag general de carga de usuarios;
+ * \return
+ *
+ */
 void mostrarCliente (eSocio users[], int tamanio, int flag)
 {
     int i;
@@ -204,13 +200,12 @@ void mostrarCliente (eSocio users[], int tamanio, int flag)
 
 /** \brief DAR DE BAJA UN USUARIO PASANDO A 2 SU STATUS
  *
- * \param
- * \param
+ * \param array estructura de usuario/socio/cliente
+ * \param tamanio de usuario/socio/cliente
+ * \param flag de prexistencia de carga de usuario/socio/cliente
  * \return
  *
  */
-
-
 void bajaCliente(eSocio users[], int tamanio, int flag)
 {
 int flagDelete;
@@ -272,15 +267,15 @@ int confirm;
 }
 
 
-/** \brief
+/** \brief modificacion de usuario/socio/cliente
  *
- * \param
- * \param
+* \param array estructura de usuario/socio/cliente
+ * \param tamanio de usuario/socio/cliente
+ * \param flag de prexistencia de carga de usuario/socio/cliente
+ * \return
  * \return
  *
  */
-
-
  void modificarCliente (eSocio users[], int tamanio, int flag)
  {
      int i;
@@ -360,9 +355,11 @@ int confirm;
 
 /** \brief HARD USUARIOS
  *
- * \param
- * \param
- * \return
+* \param array estructura de usuario/socio/cliente
+ * \param tamanio de usuario/socio/cliente
+  * \param Cantidad de hards a realziar
+ * \param flag de prexistencia de carga de usuario/socio/cliente
+ * \return flag;
  *
  */
  int hardClientes(eSocio MisUsuarios[], int tamanio, int CantCli, int flag)
@@ -382,10 +379,7 @@ int confirm;
         {
             contarUnos++;
         }
-
     }
-
-
   for(i=0;i<(tamanio+contarUnos);i++)
     {
         if (MisUsuarios[i].status==0)
@@ -399,13 +393,9 @@ int confirm;
         contaHard++;
         }
     }
-
-
     printf(" \n-----------------------------");
     printf(" %d Hards Cargados", contaHard);
     printf(" -----------------------------");
-
-
     return flag;
 }
 

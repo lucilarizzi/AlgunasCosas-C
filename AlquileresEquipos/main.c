@@ -8,8 +8,6 @@
 #include "lib.h"
 #include "clientes.h"
 
-
-
 ///////////// CONSTANTES
 #define CantClientes 15
 #define CantOperadores 5
@@ -30,10 +28,13 @@ int main()
   eEquipo equiposs [CantEquipos];
   eAlquiler alquiler [CantAlquileres];
 
+
+
   indiceClientes(clientes, CantClientes);
   indiceEmpleados(operadores, CantOperadores);
   indiceEquipos(equiposs, CantEquipos);
   indiceAlquiler(alquiler, CantAlquileres);
+
 printf("\n===== BIENVENIDO A ALQUILERES LULOOP =======\n");
 
 
