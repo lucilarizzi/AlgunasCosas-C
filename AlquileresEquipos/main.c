@@ -11,10 +11,10 @@
 
 
 ///////////// CONSTANTES
-#define CantClientes 50
-#define CantOperadores 15
-#define CantEquipos 30
-#define CantAlquileres 30
+#define CantClientes 15
+#define CantOperadores 5
+#define CantEquipos 10
+#define CantAlquileres 15
 
 
 int main()

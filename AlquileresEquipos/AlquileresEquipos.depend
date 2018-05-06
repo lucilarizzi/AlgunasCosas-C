@@ -62,3 +62,66 @@
 	"equipo.h"
 	"alquileres.h"
 
+1525545695 source:c:\users\lucil\desktop\funciones\alquileresequipos\clientes.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"clientes.h"
+	"lib.h"
+
+1525545568 c:\users\lucil\desktop\funciones\alquileresequipos\clientes.h
+
+1525553670 c:\users\lucil\desktop\funciones\alquileresequipos\lib.h
+	"clientes.h"
+	"empleados.h"
+	"equipo.h"
+	"alquileres.h"
+
+1525547167 c:\users\lucil\desktop\funciones\alquileresequipos\empleados.h
+
+1525549564 c:\users\lucil\desktop\funciones\alquileresequipos\equipo.h
+
+1525570332 c:\users\lucil\desktop\funciones\alquileresequipos\alquileres.h
+	"clientes.h"
+	"empleados.h"
+	"equipo.h"
+
+1525548189 source:c:\users\lucil\desktop\funciones\alquileresequipos\empleados.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"empleados.h"
+	"lib.h"
+
+1525572050 source:c:\users\lucil\desktop\funciones\alquileresequipos\lib.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"lib.h"
+	"clientes.h"
+
+1525572493 source:c:\users\lucil\desktop\funciones\alquileresequipos\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"lib.h"
+	"clientes.h"
+
+1525568992 source:c:\users\lucil\desktop\funciones\alquileresequipos\equipo.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"equipo.h"
+	"lib.h"
+
+1525572927 source:c:\users\lucil\desktop\funciones\alquileresequipos\alquileres.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"clientes.h"
+	"empleados.h"
+	"equipo.h"
+	"alquileres.h"
+

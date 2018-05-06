@@ -19,5 +19,6 @@ char status [10];
 void indiceAlquiler(eAlquiler alquiler[], int tamanio);
 void alquilarEquipo(eAlquiler alquiler[], eClientes cliente[],eEmpleados operador[] ,eEquipo equipo[],int CantAlquileres, int CantClientes,int CantOperadores,int CantEquipos);
 void devolucionEquipo(eAlquiler alquiler[], eClientes cliente[],eEmpleados operador[] ,eEquipo equipo[],int CantAlquileres, int CantClientes,int CantOperadores,int CantEquipos);
-
+void consultaMejorCliente(eAlquiler alquiler[], eClientes cliente[],eEmpleados operador[] ,eEquipo equipo[],int CantAlquileres, int CantClientes,int CantOperadores,int CantEquipos);
+int clienteAlquilerPeoducto(eAlquiler alquiler[], eClientes cliente[],eEmpleados operador[] ,eEquipo equipo[],int CantAlquileres, int CantClientes,int CantOperadores,int CantEquipos);
 #endif

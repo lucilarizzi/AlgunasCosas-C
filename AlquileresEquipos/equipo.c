@@ -95,29 +95,28 @@ void indiceEquipos(eEquipo equipos[], int tamanio)
   for(i=0;i<10;i++)
     {
 
-       if (i<3)
+       if (i<2)
         {
         equipos[i].idEquipo=i+40;
-        strcpy(equipos[i].tipo,"TALADRO");
+        strcpy(equipos[i].tipo,"Amoladora");
         strcpy(equipos[i].marca,"Black & Decker");
         equipos[i].status=1;
         }
+         else if (i>2&& i <7)
+        {
+        equipos[i].idEquipo=i+40;
+        strcpy(equipos[i].tipo,"Mezcladora");
+        strcpy(equipos[i].marca,"Lolo");
+        equipos[i].status=1;
+        }
 
-      /*  else if (i%2==0)
+     else if (i>7&&i <10)
         {
-        equipos[i].idEmpleado=i+30;
-        strcpy(equipos[i].nombre,"Lucila");
-        strcpy(equipos[i].apellido ,"Lopez");
+        equipos[i].idEquipo=i+40;
+        strcpy(equipos[i].tipo,"Taladro");
+        strcpy(equipos[i].marca,"Amazonia");
         equipos[i].status=1;
         }
-        else
-        {
-        equipos[i].idEmpleado=i+10;
-        strcpy(equipos[i].nombre,"Ana");
-        strcpy(equipos[i].apellido,"Gomez");
-        equipos[i].status=1;
-        }
-*/
     }
 
 

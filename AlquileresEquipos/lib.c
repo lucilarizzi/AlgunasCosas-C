@@ -233,7 +233,9 @@ do{
 do{
     printf( "\n\n\t 1- Alquilar Equipo\n"
             "\t 2- Devolucion de Equipo"
-            "\n\t 3- Consultas \n"
+            "\n\t 3- Consulta Nombre y Apellido del asociados con mas alquileres"
+             "\n\t 4- Consulta los equipos mas alquilados"
+             "\n\t 5- Tiempo Promedio real de alquiler"
             "\t 0- Salir\tSeleccione la opcion: \t ");
 
     scanf("%d", &opcion);
@@ -247,12 +249,11 @@ do{
                         devolucionEquipo(alquiler, clientes,operadores,equiposs,CantAlquileres, CantClientes, CantOperadores,CantEquipos);
                         cleanScreen();
                         break;
-                /*    case 3:
-                        auxflag=*flag;
-                        modificarEquipo(equiposs, tamanio, auxflag);
-                        cleanScreen();
-                        break;
-                   case 4:
+                case 3:
+                      consultaMejorCliente(alquiler, clientes,operadores,equiposs,CantAlquileres, CantClientes, CantOperadores,CantEquipos);
+                      cleanScreen();
+                      break;
+                  /* case 4:
                         printf("\t Ingrese cuantos Operadores desea harcodear: \t");
                         scanf("%d", &usuariosParaHard);
                           if (usuariosParaHard>tamanio)

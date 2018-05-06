@@ -26,21 +26,33 @@ void indiceAlquiler(eAlquiler alquiler[], int tamanio)
 
     alquiler[0].idCliente =10;
     alquiler[1].idCliente =10;
-    alquiler[2].idCliente =10;
+    alquiler[2].idCliente =11;
+    alquiler[3].idCliente =10;
+    alquiler[4].idCliente =11;
+    alquiler[5].idCliente =15;
 
-    alquiler[0].idEquipo =40;
+    alquiler[0].idEquipo =41;
     alquiler[1].idEquipo =41;
     alquiler[2].idEquipo  =42;
+    alquiler[3].idEquipo =40;
+    alquiler[4].idEquipo =41;
+    alquiler[5].idEquipo  =42;
 
     alquiler[0].idOperador =21;
-    alquiler[1].idOperador  =21;
-    alquiler[2].idOperador   =21;
+    alquiler[1].idOperador=22;
+    alquiler[2].idOperador=22;
+     alquiler[3].idOperador=22;
+    alquiler[4].idOperador=22;
+    alquiler[5].idOperador  =21;
 
     alquiler[0].tiempoAlquiler=7;
-    alquiler[1].tiempoAlquiler=29;
+    alquiler[1].tiempoAlquiler=9;
     alquiler[2].tiempoAlquiler =2;
+    alquiler[3].tiempoAlquiler=7;
+    alquiler[4].tiempoAlquiler=12;
+    alquiler[5].tiempoAlquiler =2;
 
-    for (i=0 ; i<3;i++)
+    for (i=0 ; i<6;i++)
     {
     alquiler[i].idAlquiler=i+1;
     strcpy(alquiler[i].status, "ALQUILADO");
@@ -163,43 +175,14 @@ for (i=0; i <CantAlquileres; i++)
      int flag=0;
 
     listadoDeClientes(cliente, CantClientes);
-    printf("\n\nIngrese el id de cliente que desea devolver un equipo :");
-    scanf("%d", &idClienteAux);
-
-
-       for (j=0; j<CantClientes; j++) // recorro los clientes
-        {
-           if (idClienteAux== cliente[j].idCliente) // si el cliente es igual al que busco
-                {
-           for (i=0; i <CantAlquileres; i++) // recorro los alquileres realizados
-                {
-                if (cliente[j].idCliente==alquiler[i].idCliente && strcmp(alquiler[i].status,"ALQUILADO")==0 ) // busci los alquilere que realizo ese cliente
-                    {
-                        printf("\n-----Transacion %d -- Estado %s------",alquiler[i].idAlquiler, alquiler[i].status); // que cleinte es
-
-                       for (k=0; k<CantEquipos; k++) // recorro lo equipo
-                        {
-                            if (alquiler[i].idEquipo== equipo[k].idEquipo) //i si el equipo del alquiler coincide con la base
-                            {
-                                flag=1;
-                            showOneEquip(equipo[k]); // muestro una linea de equipo
-                            break;
-                            }
-                        }
-
-                    }
-                }
-                break;
-                }
-
-        }
-
-
-
-
-     if (flag==0)
+    flag=clienteAlquilerPeoducto(alquiler, cliente, operador,equipo,CantAlquileres, CantClientes, CantOperadores, CantEquipos);
+    if (flag==0)
          {
              printf("\n\n=========== No existe el usuario ==============\n");
+         }
+    else if (flag==2)
+         {
+             printf("\n\n=========== Este Cliente no tiene transacciones ==============\n");
          }
     else
          {
@@ -244,16 +227,105 @@ for (i=0; i <CantAlquileres; i++)
 
 }
 
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
 
-   /*    printf("\n================================================");
-       printf("\nCliente:");
-       showOneClient(cliente[j]);
-        printf("\n");
-        printf("\nEquipo:");
-        showOneEquip(equipo[k]);
-        printf("\n");
-        printf("\n");
-        printf("\nEstara alquilado por %d Dias", alquiler[i].tiempoAlquiler);*/
+void consultaMejorCliente(eAlquiler alquiler[], eClientes cliente[],eEmpleados operador[] ,eEquipo equipo[],int CantAlquileres, int CantClientes,int CantOperadores,int CantEquipos)
+{
+    int i;
+      int j;
+       int k;
+      int idClienteAux;
+      int flag=0;
+      int f;
+      int contador[CantClientes];
+ char max[30];
 
+    for (j=0; j<CantClientes; j++) // recorro los clientes
+        { contador [j]=0;
+          for (i=0; i <CantAlquileres; i++) // recorro los alquileres realizados
+                {
+                    if (alquiler[i].idCliente == cliente[j].idCliente)
+                        {
+                        for (k=0; k<CantEquipos; k++) // recorro lo equipo
+                        {
+                            if (alquiler[i].idEquipo== equipo[k].idEquipo) //i si el equipo del alquiler coincide con la base
+                            {
+                            contador[j]++;
+                            }
+                        }
+                        }
+                    }
+              }
+
+ for (j=0; j<CantClientes; j++) // recorro los clientes
+        {
+            if (contador[j]<contador[j+1]|| flag ==0)
+            {
+            strcpy(max , cliente[j].nombre);
+            strcat(max, " ");
+            strcat(max , cliente [j].apellido);
+            flag =1;
+            }
+
+
+        }
+        printf(" El usuario que mas alquileres hizo fue \t %s", max);
+
+}
+
+
+  /** \brief recorre cliente, busca alquileres, lista producto alquilado
+   *
+   * \param
+   * \param
+   * \return
+   *
+   */
+
+   int clienteAlquilerPeoducto(eAlquiler alquiler[], eClientes cliente[],eEmpleados operador[] ,eEquipo equipo[],int CantAlquileres, int CantClientes,int CantOperadores,int CantEquipos)
+  {
+      int i;
+      int j;
+       int k;
+      int idClienteAux;
+      int flag=0;
+
+
+    printf("\n\nIngrese el id de cliente que desea devolver un equipo :");
+    scanf("%d", &idClienteAux);
+
+       for (j=0; j<CantClientes; j++) // recorro los clientes
+        {
+           if (idClienteAux== cliente[j].idCliente) // si el cliente es igual al que busco
+                {
+                flag=2;
+           for (i=0; i <CantAlquileres; i++) // recorro los alquileres realizados
+                {
+                if (cliente[j].idCliente==alquiler[i].idCliente && strcmp(alquiler[i].status,"ALQUILADO")==0 ) // busci los alquilere que realizo ese cliente
+                    {
+                       for (k=0; k<CantEquipos; k++) // recorro lo equipo
+                        {
+                            if (alquiler[i].idEquipo== equipo[k].idEquipo) //i si el equipo del alquiler coincide con la base
+                            {
+                            flag=1;
+                            printf("\nTRANSACCION %d                -- Estado %s------",alquiler[i].idAlquiler, alquiler[i].status);
+                            showOneEquip(equipo[k]); // muestro una linea de equipo
+                            break;
+                            }
+
+                            }
+                    }
+                }
+                 break;
+                }
+          }
+          return flag;
+}
 
 
