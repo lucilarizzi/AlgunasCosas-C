@@ -69,8 +69,6 @@ do{
                 }
  }while (opcion !=0);
 
-
-
 }
 
 /** \brief MENU DE ambulancias
@@ -131,7 +129,7 @@ do{
  *
  */
 int pedirDNI (void)
- {
+{
     int dni;
     printf("Ingrese una DNI\t");
    scanf("%d", &dni);
@@ -198,18 +196,18 @@ void  menuLlamadas(eLlamados llama[],eSocio soci [],eAmbu ambulan[],int CantLlam
     int opcion;
     int auxflag=0;
 
-do{
-    printf( "\n\n\t 1- Recibir Llamado\n"
-            "\t 2- Finzalizar LLamados"
-            "\n\t 3- Consulta Nombre y Apellido del asociados con mas LLAmados"
-             "\n\t 4- Consulta los motivos mas frecuentes"
-             "\n\t 5- Que motivo mas demora "
-             "\n\t 6- MOdificar llamada"
+        do{
+            printf( "\n\n\t 1- Recibir Llamado\n"
+                    "\t 2- Finzalizar LLamados"
+                    "\n\t 3- Consulta Nombre y Apellido del asociados con mas LLAmados"
+                     "\n\t 4- Consulta los motivos mas frecuentes"
+                     "\n\t 5- Que motivo mas demora "
+                     "\n\t 6- MOdificar llamada"
 
-            "\t 0- Salir\tSeleccione la opcion: \t ");
+                    "\t 0- Salir\tSeleccione la opcion: \t ");
 
-    scanf("%d", &opcion);
-    switch (opcion)
+            scanf("%d", &opcion);
+            switch (opcion)
                 {
                     case 1:
                         recibirLlamado(llama, soci,ambulan,CantLlamadas, CantSocios,CantAmbulancias);
@@ -250,5 +248,6 @@ do{
  }while (opcion !=0);
 
 
- }
+}
+
 

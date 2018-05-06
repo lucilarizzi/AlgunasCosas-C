@@ -60,4 +60,6 @@ void  menuAmbulancias(eAmbu[], int , int * );
  */
 void  menuLlamadas(eLlamados[], eSocio[], eAmbu[],int , int ,int );
 
+
+
 #endif

@@ -21,12 +21,6 @@
 #define estado1 "PENDIENTE"
 #define estado2 "CUMPLIDO"
 
-
-
-
-
-
-
 int main()
 {
   int opcion =-1;

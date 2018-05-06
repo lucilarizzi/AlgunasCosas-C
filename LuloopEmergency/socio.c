@@ -16,6 +16,7 @@
  */
 int  altaCliente (eSocio users[], int tamanio)
 {
+    int flag=0;
     int dni;
     int seguir='s';
     int index;

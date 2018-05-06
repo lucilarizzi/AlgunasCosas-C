@@ -48,27 +48,27 @@
 	"ambulancias.h"
 	"lib.h"
 
-1525643497 source:c:\users\lucil\desktop\funciones\luloopemergency\ambulancias.c
+1525646363 source:c:\users\lucil\desktop\funciones\luloopemergency\ambulancias.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	"ambulancias.h"
 	"lib.h"
 
-1525629833 c:\users\lucil\desktop\funciones\luloopemergency\ambulancias.h
+1525646363 c:\users\lucil\desktop\funciones\luloopemergency\ambulancias.h
 
-1525633517 c:\users\lucil\desktop\funciones\luloopemergency\lib.h
+1525646808 c:\users\lucil\desktop\funciones\luloopemergency\lib.h
 	"ambulancias.h"
 	"socio.h"
 	"llamados.h"
 
-1525629833 c:\users\lucil\desktop\funciones\luloopemergency\socio.h
+1525647487 c:\users\lucil\desktop\funciones\luloopemergency\socio.h
 
-1525641888 c:\users\lucil\desktop\funciones\luloopemergency\llamados.h
+1525647451 c:\users\lucil\desktop\funciones\luloopemergency\llamados.h
 	"socio.h"
 	"ambulancias.h"
 
-1525636185 source:c:\users\lucil\desktop\funciones\luloopemergency\main.c
+1525647417 source:c:\users\lucil\desktop\funciones\luloopemergency\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -85,13 +85,13 @@
 	"socio.h"
 	"lib.h"
 
-1525641870 source:c:\users\lucil\desktop\funciones\luloopemergency\lib.c
+1525647495 source:c:\users\lucil\desktop\funciones\luloopemergency\lib.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	"lib.h"
 
-1525642731 source:c:\users\lucil\desktop\funciones\luloopemergency\llamados.c
+1525646960 source:c:\users\lucil\desktop\funciones\luloopemergency\llamados.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>

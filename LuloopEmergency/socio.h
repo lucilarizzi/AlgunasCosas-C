@@ -48,7 +48,7 @@ void indiceSocio(eSocio usuarios[], int tamanio);
  * \return
  *
  */
-void cargarSocios(eSocio usuarios[], int tamanio)
+void cargarSocios(eSocio usuarios[], int tamanio);
 
 
 /** \brief mostrar listado de usuario/socio/cliente

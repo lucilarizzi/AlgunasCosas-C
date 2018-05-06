@@ -1,5 +1,3 @@
-
-
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,10 +13,10 @@
 #define estado2 "CUMPLIDO"
 
 
-/** \brief
+/** \brief niicializa los estados a cero
  *
- * \param
- * \param
+ * \param array de estrcutura
+ * \param  tamanio del arrau
  * \return
  *
  */
@@ -32,10 +30,10 @@ void indiceLlamados(eLlamados llamadas [], int tamanio)
      }
 }
 
-/** \brief
+/** \brief carga inicial de llamados para poder operar
  *
- * \param
- * \param
+ * \param array de estrcutura
+ * \param  tamanio del arrau
  * \return
  *
  */
@@ -62,14 +60,17 @@ void cargarLlamados(eLlamados llamadas [], int tamanio)
       strcpy(llamadas [i].motivo, motivo2);
    }
 
-
-   /** \brief
-    *
-    * \param
-    * \param
-    * \return
-    *
-    */
+/** \brief recibir llamado
+ *
+ * \param ARRAY ESTRUCTURA de llamadas
+ * \param ARRAY ESTRUCTURA de socios
+ * \param ARRAY ESTRUCTURA de ambulancias
+ * \param CANT DE llamadas
+ * \param CANT DE socio
+ * \param CANT DE ambulancias
+ * \return
+ *
+ */
 
     void recibirLlamado(eLlamados llamado [], eSocio socio[],eAmbu ambulancia[],int CantLlamadas, int CantSocios ,int CantAmbulancias )
     {
@@ -87,8 +88,6 @@ void cargarLlamados(eLlamados llamadas [], int tamanio)
     listadoDeSocio(socio, CantSocios);
     printf("\n\nIngrese el id de Socio que necesita una ambulancia :");
     scanf("%d", &idClienteAux);
-
-
 
 
 for (i=0; i <CantLlamadas; i++)
@@ -137,6 +136,18 @@ for (i=0; i <CantLlamadas; i++)
 
  }
 
+
+ /** \brief FINALIZAR LLAMADO
+ *
+ * \param ARRAY ESTRUCTURA de llamadas
+ * \param ARRAY ESTRUCTURA de socios
+ * \param ARRAY ESTRUCTURA de ambulancias
+ * \param CANT DE llamadas
+ * \param CANT DE socio
+ * \param CANT DE ambulancias
+ * \return
+ *
+ */
  void finzalarLlamada(eLlamados llama[], eSocio socio [],eAmbu ambulanc[],int CantLlamadas,int CantSocios,int CantAmbulancias)
  {
      int i;
@@ -166,14 +177,17 @@ for (i=0; i <CantLlamadas; i++)
 
 
 
-/** \brief recorre cliente, busca alquileres, lista producto alquilado
-   *
-   * \param
-   * \param
-   * \return
-   *
-   */
-
+/** \brief recorre SOCIO, busca LA LLAMADA , LA DA POR FINALIZADA
+ *
+ * \param ARRAY ESTRUCTURA de llamadas
+ * \param ARRAY ESTRUCTURA de socios
+ * \param ARRAY ESTRUCTURA de ambulancias
+ * \param CANT DE llamadas
+ * \param CANT DE socio
+ * \param CANT DE ambulancias
+ * \return
+ *
+ */
    int buscarLlamado(eLlamados llamadass[], eSocio cliente[],eAmbu equipo[],int CantLlamadas, int CantSocios,int CantAmbulancias)
   {
       int i;
@@ -213,8 +227,8 @@ for (i=0; i <CantLlamadas; i++)
 
 /** \brief MOSTRAR 1 LLAMADO
  *
- * \param
- * \param
+ * \param array de estrcutura DE LLAMADA
+ * \param  tamanio del arraY
  * \return
  *
  */
@@ -226,8 +240,8 @@ for (i=0; i <CantLlamadas; i++)
 
  /** \brief LISTADO DE LLAMADAS
  *
- * \param
- * \param
+ * \param array de estrcutura DE LLAMADA
+ * \param  tamanio del arraY
  * \return
  *
  */
@@ -245,7 +259,17 @@ for (i=0; i <CantLlamadas; i++)
                 }
  }
 
-
+/** \brief MODIFICAR LOS DATOS DE UNA LLAMADA
+ *
+ * \param ARRAY ESTRUCTURA de llamadas
+ * \param ARRAY ESTRUCTURA de socios
+ * \param ARRAY ESTRUCTURA de ambulancias
+ * \param CANT DE llamadas
+ * \param CANT DE socio
+ * \param CANT DE ambulancias
+ * \return
+ *
+ */
  void modificarLlamada(eLlamados llamada[], eSocio socio[],eAmbu ambu[],int CantLlamadas, int CantSocios,int CantAmbulancias)
  {
     int i;
@@ -328,6 +352,14 @@ for (i=0; i <CantLlamadas; i++)
                 }
             }
 
+
+/** \brief ACCESORIA A MODIFICAR LLAMADA, PARA MODIFICAR EL MOTIVO
+*
+* \param
+* \param
+* \return
+*
+*/
 void ingresarMotivo (eLlamados llamada)
 {
     int auxMotivo;
