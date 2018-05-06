@@ -83,14 +83,19 @@ void cargarLlamados(eLlamados llamadas [], int tamanio)
      int idOperadorAux;
      int idEquipoAux;
 
+
     listadoDeSocio(socio, CantSocios);
     printf("\n\nIngrese el id de Socio que necesita una ambulancia :");
     scanf("%d", &idClienteAux);
+
+
+
 
 for (i=0; i <CantLlamadas; i++)
 {
     if (strcmp(llamado[i].status,estado0)==0) // busco el indice disponible en las relaciones de llamado
     {
+    ingresarMotivo(llamado[i]);
        strcpy(llamado[i].status, estado1);
        llamado [i].idLlamado=i+1;
        for (j=0; j<CantSocios; j++) // recorro
@@ -106,6 +111,7 @@ for (i=0; i <CantLlamadas; i++)
                     if (idEquipoAux== ambulancia[k].idAmbu)
                     {
                         llamado [i].idAmbulancia=idEquipoAux;
+                        ambulancia[k].status=2;
                         printf("\n\nIngrese la hora de asignacion de ambulancia id %d : ", llamado [i].idAmbulancia);
                         scanf("%f", &llamado[i].tiempoAsignacion);
                         break;
@@ -170,6 +176,7 @@ for (i=0; i <CantLlamadas; i++)
 
    int buscarLlamado(eLlamados llamadass[], eSocio cliente[],eAmbu equipo[],int CantLlamadas, int CantSocios,int CantAmbulancias)
   {
+      int i;
       int j;
       int idClienteAux;
       int flag=0;
@@ -185,6 +192,17 @@ for (i=0; i <CantLlamadas; i++)
                 flag=1;
                 mostrarLlamado(llamadass[j]);
                 strcpy(llamadass[j].status,estado2);
+                for (j=0; j<CantAmbulancias; j++)
+                {
+                    if (equipo[i].idAmbu==llamadass[j].idAmbulancia)
+                    {
+                        equipo[i].status=1;
+                        printf("\nAmbulancia %d ya disponible ", equipo[i].idAmbu);
+                    }
+                }
+
+
+
                 printf("\n\n=========== LLAMADA FINALIZADA ==============\n");
                 break;
                 }
@@ -226,3 +244,112 @@ for (i=0; i <CantLlamadas; i++)
 
                 }
  }
+
+
+ void modificarLlamada(eLlamados llamada[], eSocio socio[],eAmbu ambu[],int CantLlamadas, int CantSocios,int CantAmbulancias)
+ {
+    int i;
+     int idAux;
+     int auxMotivo;
+     int confirm;
+     int flagchange=0;
+     int opcion;
+
+
+               listarLlamado(llamada, CantLlamadas);
+               printf("\n===================================================================================\n");
+               printf("\n\n Ingrese el Id del llamada que desea Modificar:\t");
+               scanf("%d", &idAux);
+
+               for (i=0; i<CantLlamadas;i++)
+                            {
+                                if (llamada[i].idLlamado == idAux)
+                                    {
+                                    mostrarLlamado(llamada[i]);
+                                    confirm =preguntarSiNo("Seguro que desea modificar la llamada :\t");
+                                    break;
+                                    }
+                            }
+
+                flagchange=0;
+                if( confirm == 's')
+                    {
+                for (i=0; i<CantLlamadas;i++)
+                {
+                    if (llamada[i].idLlamado  == idAux)
+                        {
+                        printf("\n \nEl Equipo a modificar es");
+                        mostrarLlamado(llamada[i]);
+
+                        printf("\n=========================\n \nOPCIONES \n 1- Socio\n 2- Ambulancia \n 3- Motivo\n 4- Hora Asignacion \n 5- Hora Finalizado\n \t \t Que dato desea modificar?\t");
+                        scanf ("%d", &opcion);
+                        switch(opcion)
+                                {
+                                case 1:
+                                    listadoDeSocio(socio, CantSocios);
+                                     printf("\n Ingrese el nuevo IDdeSocio\t");
+                                     printf("%dl", &llamada[i].idSocios);
+                                     break;
+                                case 2:
+                                    listadoDeAmbus(ambu, CantAmbulancias);
+                                    printf("\n Ingrese el ID Ambulancia\t");
+                                    printf("%dl", &llamada[i].idAmbulancia);
+                                    break;
+
+                                case 3:
+                                    ingresarMotivo(llamada [i]);
+                                    break;
+                                case 4:
+                                     printf("\n Ingrese el nuevo hora asignacion\t");
+                                     scanf("%f",&llamada[i].tiempoAsignacion);
+                                     break;
+                                case 5:
+                                   printf("\n Ingrese el nuevo hora finalizado\t");
+                                     scanf("%f",&llamada[i].tiempoDevolucion);
+                                     break;
+                                    break;
+                                 default:
+                                    printf("\n NO INGRESO UNA OPCION VALIDA\t");
+                                    break;
+                                  }
+
+                        printf("\n\n\n======================\n llamada modificado\n======================\n");
+                        flagchange=1;
+                        mostrarLlamado(llamada[i]);
+                        break;
+                        }
+                }
+                    }
+                    else
+                          {
+                printf("\n\n=====================================\n");
+                printf("OPERACION CANCELADA");
+                printf("\n=====================================\n");
+                }
+            }
+
+void ingresarMotivo (eLlamados llamada)
+{
+    int auxMotivo;
+    printf("\n1- %s\n2- %s\n3- %s\n\t Ingrese el Nro del motivo\t", motivo1, motivo2, motivo3);
+    scanf("%d", &auxMotivo);
+    switch (auxMotivo)
+      {
+        case 1:
+        strcpy(llamada.motivo, motivo1);
+        strcat(llamada.motivo, " ");
+        break;
+        case 2:
+        strcpy(llamada.motivo, motivo2);
+        strcat(llamada.motivo, " ");
+        break;
+        case 3:
+        strcpy(llamada.motivo, motivo3);
+        strcat(llamada.motivo, " ");
+        break;
+        default:
+        printf("\n accion cancelada");
+        break;
+        }
+}
+

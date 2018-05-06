@@ -101,7 +101,7 @@ void cargarAmbus(eAmbu equipos[], int tamanio)
   void listadoDeAmbus (eAmbu ambulan [], int tamanio)
  {
       int i;
-      printf("\n\n\n========================\n Equipos CARGADOS\n========================\n");
+      printf("\n\n\n========================\n AMBULANCIAS\n========================\n");
                 for (i=0; i<tamanio; i++)
                 {
                     if (ambulan[i].status==1)
