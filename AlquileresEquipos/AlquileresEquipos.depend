@@ -1,0 +1,64 @@
+# depslib dependency file v1.0
+1525545695 source:c:\users\lucil\desktop\alquileresequipos\clientes.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"clientes.h"
+	"lib.h"
+
+1525566192 source:c:\users\lucil\desktop\alquileresequipos\lib.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"lib.h"
+	"clientes.h"
+
+1525551718 source:c:\users\lucil\desktop\alquileresequipos\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"lib.h"
+	"clientes.h"
+
+1525553670 c:\users\lucil\desktop\alquileresequipos\lib.h
+	"clientes.h"
+	"empleados.h"
+	"equipo.h"
+	"alquileres.h"
+
+1525545568 c:\users\lucil\desktop\alquileresequipos\clientes.h
+
+1525547167 c:\users\lucil\desktop\alquileresequipos\empleados.h
+
+1525548189 source:c:\users\lucil\desktop\alquileresequipos\empleados.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"empleados.h"
+	"lib.h"
+
+1525549564 c:\users\lucil\desktop\alquileresequipos\equipo.h
+
+1525555155 source:c:\users\lucil\desktop\alquileresequipos\equipo.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"equipo.h"
+	"lib.h"
+
+1525561737 c:\users\lucil\desktop\alquileresequipos\alquileres.h
+	"clientes.h"
+	"empleados.h"
+	"equipo.h"
+
+1525567541 source:c:\users\lucil\desktop\alquileresequipos\alquileres.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"clientes.h"
+	"empleados.h"
+	"equipo.h"
+	"alquileres.h"
+

@@ -1,0 +1,38 @@
+# depslib dependency file v1.0
+1525536643 source:c:\users\lucil\desktop\funciones\lib.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"lib.h"
+	"usuarios.h"
+	"producto.h"
+
+1525534205 c:\users\lucil\desktop\funciones\lib.h
+	"usuarios.h"
+	"producto.h"
+
+1525537175 c:\users\lucil\desktop\funciones\usuarios.h
+
+1525530355 c:\users\lucil\desktop\funciones\producto.h
+
+1525537175 source:c:\users\lucil\desktop\funciones\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"lib.h"
+	"usuarios.h"
+	"producto.h"
+
+1525530355 source:c:\users\lucil\desktop\funciones\producto.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"producto.h"
+
+1525534850 source:c:\users\lucil\desktop\funciones\usuarios.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"usuarios.h"
+

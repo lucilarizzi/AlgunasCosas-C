@@ -25,47 +25,23 @@ int logIn (eUsuario users[] , int CantUsuario)
  char auxPas [12];
  int flag=0;
 
+  printf("\n Ingrese su user id :\t");
+  scanf("%d", &auxId);
 
-   printf ("\n \n\n SI NO TIENE USUARIO INGRESE 5555");
-   printf ("\n \n\n PARA SALIR INGRESE USUARIO 9999");
-   printf("\n Ingrese su user id :\t");
-   scanf("%d", &auxId);
+  printf ("\n Ingrese su clave :\t");
+  fflush(stdin);
+  gets(auxPas);
 
-    if (auxId== 9999)
+  for (i=0; i <CantUsuario;i++)
         {
-           flag=2;
-           printf("\n ============ Usted ha salido ================ \n");
-          }
-
-   else if (auxId==5555)
-        {
-           flag=3;
-           printf("\n ============ Area alta de usuarios ================ \n");
-        }
-
-  else
-    {
-       printf ("\n Ingrese su clave :\t");
-       fflush(stdin);
-       gets(auxPas);
-
-
-        for (i=0; i <CantUsuario;i++)
-        {
-
-         if (users[i].idUsuario == auxId && strncmp(users[i].password, auxPas, 12)==0)//&& users[i].password == auxPas)
+         if (users[i].idUsuario == auxId && strncmp(users[i].password, auxPas, 12)==0)
             {
-                 flag=1;
-                 printf("\n ============ WELCOME ================ \n");
-               break;
+            flag=1;
+            printf("\n ============ WELCOME ================ \n");
+            break;
             }
-
-
-          }
-
-      }
-
-      return flag;
+         }
+   return flag;
     }
 
 /** \brief MENU GENERAL
@@ -76,9 +52,10 @@ int logIn (eUsuario users[] , int CantUsuario)
  *
  */
 
- int menuGeneral (eUsuario users [], eProducto productos []; int cantUsuarios, int cantProducto)
+ int menuGeneral (eUsuario users [], eProducto productos [], eRelaciones relaciones[], int cantUsuario, int cantProducto)
  {
      int flagProducto=0;
+     int flagUsuarios=0;
      int opcion;
 
  while (opcion !=0)
@@ -100,11 +77,11 @@ int logIn (eUsuario users[] , int CantUsuario)
                     cleanScreen();
                     break;
                 case 2:
-                    menuProducto(productos, cantProduct, &flagProducto);
+                    menuProducto(productos, cantProducto, &flagProducto);
                     cleanScreen();
                     break;
                 case 3:
-                    comprarProducto (productos, users,relaciones, cantProduct, cantUsuario, &flagProducto, &flagUsuarios);
+                    comprarProducto (productos, users,relaciones, cantProducto, cantUsuario, flagProducto, &flagUsuarios);
                     cleanScreen();
                     break;
                 case 4:
@@ -125,7 +102,7 @@ int logIn (eUsuario users[] , int CantUsuario)
     }
     cleanScreen();
 
-    return flagUsuario;
+    return flagUsuarios;
  }
 
 

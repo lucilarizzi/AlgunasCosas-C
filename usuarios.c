@@ -15,7 +15,7 @@
  *
  */
 
-void  menuUsuario (eUsuario usuarioss[], int tamanio, int *flag)
+void  menuUsuario (eUsuario usuarioss[], int tamanio, int *flag )
 {
     int i;
     int opcion;
@@ -37,7 +37,7 @@ do{
     switch (opcion)
                 {
                     case 1:
-                        auxflag =altaUsuario(users, CantUsuario, flagUsuarios);
+                        auxflag =altaUsuario(usuarioss, CantUsuario, flag);
                         cleanScreen();
                         break;
 
@@ -134,12 +134,6 @@ void indiceUsuarios (eUsuario usuarios[], int tamanio)
         }
 
     }
-
-    listadoDeUsuarios(usuarios, 10);
-
-    printf("\n \n \t Usar ID 10 --- Clave 1111");
-
-
 
 
 }

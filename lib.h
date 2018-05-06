@@ -1,9 +1,6 @@
 #include "usuarios.h"
 #include "producto.h"
 
-
-
-
 typedef struct
 {
     int idUsuario;

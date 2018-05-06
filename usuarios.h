@@ -24,7 +24,7 @@ typedef struct
 } eNacimiento;
 
 
-void menuUsuario (eUsuario users[], int tamanio, int *flag);
+void menuUsuario (eUsuario[], int , int *);
 void indiceUsuarios (eUsuario [], int);
 int hardUsuario (eUsuario [], int, int);
 int searchIndexUsers ( eUsuario status[], int tamanio);
@@ -33,7 +33,7 @@ void mostrarUsuarios (eUsuario users[], int tamanio, int );
 void mostrarUsuariosDadoBaja(eUsuario users[], int tamanio, int *flag);
 void listadoDeUsuarios (eUsuario users [], int tamanio);
 void bajaUsuario (eUsuario users[], int tamanio, int flag);
- void modificarUsuario (eUsuario users[], int tamanio, int flag);
+void modificarUsuario (eUsuario users[], int tamanio, int flag);
 
 
 #endif
