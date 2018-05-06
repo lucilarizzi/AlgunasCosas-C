@@ -5,6 +5,15 @@
 #include "ambulancias.h"
 #include "lib.h"
 
+
+/** \brief Alta Ambulancia
+ *
+ * \param ESTRUCTURA de llamadas
+ * \param CANT DE llamadas
+ * \param flag
+ * \return flag
+ *
+ */
 int altaAmbu (eAmbu ambulan[], int tamanio, int flag)
 {
     int seguir='s';
@@ -32,7 +41,13 @@ int altaAmbu (eAmbu ambulan[], int tamanio, int flag)
         }
 }
 
-
+/** \brief buscar index
+ *
+ * \param array ESTRUCTURA de ambulancias
+ * \param CANT DE ambulancias
+ * \return primer index disponible
+ *
+ */
 int searchIndexAmbul( eAmbu status[], int tamanio)
 {
     int index=-1;
@@ -49,10 +64,10 @@ int searchIndexAmbul( eAmbu status[], int tamanio)
 }
 
 
-/** \brief
+/** \brief LLeva a todos los estatus a cero de ambulancias
  *
- * \param
- * \param
+ * \param array ESTRUCTURA de ambulancias
+ * \param CANT DE ambulancias
  * \return
  *
  */
@@ -65,7 +80,13 @@ void indiceAmbus(eAmbu equipos[], int tamanio)
      }
 }
 
-
+/** \brief precarga de informacion de ambulancias
+ *
+ * \param array ESTRUCTURA de ambulancias
+ * \param CANT DE ambulancias
+ * \return
+ *
+ */
 void cargarAmbus(eAmbu equipos[], int tamanio)
 {
     int i;
@@ -78,10 +99,9 @@ void cargarAmbus(eAmbu equipos[], int tamanio)
 
  }
 
-/** \brief mostrar 1 datos de 1 clientes
+/** \brief mostrar 1 datos de 1 ambulancia
  *
- * \param
- * \param
+ * \param ESTRUCTURA de ambulancias
  * \return
  *
  */
@@ -91,10 +111,10 @@ void cargarAmbus(eAmbu equipos[], int tamanio)
 }
 
 
-/** \brief
+/** \brief listado de ambulancias
  *
- * \param
- * \param
+ * \param array ESTRUCTURA de ambulancias
+ * \param CANT DE ambulancias
  * \return
  *
  */
@@ -104,23 +124,22 @@ void cargarAmbus(eAmbu equipos[], int tamanio)
       printf("\n\n\n========================\n AMBULANCIAS\n========================\n");
                 for (i=0; i<tamanio; i++)
                 {
-                    if (ambulan[i].status==1)
+                    if (ambulan[i].status==1 ||ambulan[i].status==1)
                     {
                         showOneAmbu(ambulan[i]);
                     }
-
                 }
  }
 
 
- /** \brief
-  *
-  * \param
-  * \param
-  * \return
-  *
-  */
-
+/** \brief mostrar ambulancias
+ *
+ * \param array ESTRUCTURA de ambulancias
+ * \param CANT DE ambulancias
+  * \param flag
+ * \return
+ *
+ */
 void mostrarAmbulancias (eAmbu ambulan [], int tamanio, int flag)
 {
     int i;
@@ -138,15 +157,14 @@ void mostrarAmbulancias (eAmbu ambulan [], int tamanio, int flag)
 }
 
 
-/** \brief DAR DE BAJA UN USUARIO PASANDO A 2 SU STATUS
+/** \brief Baja de ambulancia- pasa estado a cero
  *
- * \param
- * \param
+ * \param array ESTRUCTURA de ambulancias
+ * \param CANT DE ambulancias
+  * \param flag
  * \return
  *
  */
-
-
 void bajaAmbulancia (eAmbu ambulan[], int tamanio, int flag)
 {
 int flagDelete;

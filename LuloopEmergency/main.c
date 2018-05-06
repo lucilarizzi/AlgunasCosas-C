@@ -32,18 +32,19 @@ int main()
   int opcion =-1;
   int flagSocios=1;
   int flagAmbu=1;
-  eSocio socios[CantSocios];
-eAmbu ambulancias [CantAmbulancias];
-eLlamados llamada [CantLlamadas];
 
-  indiceSocio(socios, CantSocios);
-  cargarSocios(socios, 5);
+    eSocio socios[CantSocios];
+    eAmbu ambulancias [CantAmbulancias];
+    eLlamados llamada [CantLlamadas];
 
-indiceAmbus(ambulancias, CantAmbulancias);
-cargarAmbus(ambulancias, 5);
+    indiceSocio(socios, CantSocios);
+    cargarSocios(socios, 5);
 
-indiceLlamados(llamada, CantLlamadas);
-cargarLlamados(llamada, 10);
+    indiceAmbus(ambulancias, CantAmbulancias);
+    cargarAmbus(ambulancias, 5);
+
+    indiceLlamados(llamada, CantLlamadas);
+    cargarLlamados(llamada, 10);
 
 
 do
