@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1525694156 source:c:\test\rizzi\primerparcial_laboratorio1\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+
+1525693591 c:\test\rizzi\primerparcial_laboratorio1\funciones.h
+
+1525695278 c:\test\rizzi\primerparcial_laboratorio1\propietarios.h
+
+1525702660 c:\test\rizzi\primerparcial_laboratorio1\ingresoegresos.h
+	"funciones.h"
+	"propietarios.h"
+
+1525702356 source:c:\test\rizzi\primerparcial_laboratorio1\ingresoegresos.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+
+1525701310 source:c:\test\rizzi\primerparcial_laboratorio1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+
+1525702475 source:c:\test\rizzi\primerparcial_laboratorio1\propietarios.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+
