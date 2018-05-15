@@ -42,3 +42,46 @@
 	"propietarios.h"
 	"ingresoEgresos.h"
 
+1526405286 source:c:\users\usuario\desktop\150518\funciones\primerparcial_laboratorio1\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+
+1526405286 c:\users\usuario\desktop\150518\funciones\primerparcial_laboratorio1\funciones.h
+
+1526409242 c:\users\usuario\desktop\150518\funciones\primerparcial_laboratorio1\propietarios.h
+
+1526408891 c:\users\usuario\desktop\150518\funciones\primerparcial_laboratorio1\ingresoegresos.h
+	"funciones.h"
+	"propietarios.h"
+
+1526408891 source:c:\users\usuario\desktop\150518\funciones\primerparcial_laboratorio1\ingresoegresos.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+
+1526409777 source:c:\users\usuario\desktop\150518\funciones\primerparcial_laboratorio1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+
+1526409762 source:c:\users\usuario\desktop\150518\funciones\primerparcial_laboratorio1\propietarios.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+

@@ -20,7 +20,6 @@
 int  altaCliente (ePropietario propietario[], int tamanio)
 {
     int flag=0;
-    int dni;
     int seguir='s';
     int index;
     while (seguir == 's')
@@ -41,7 +40,7 @@ int  altaCliente (ePropietario propietario[], int tamanio)
                 fflush(stdin);
                 gets(propietario[index].direccion);
 
-                 printf("Ingrese nro de tarjeta de credito:\t");
+                printf("Ingrese nro de tarjeta de credito:\t");
                 fflush(stdin);
                 gets(propietario[index].tarjetaCredito);
 
@@ -105,7 +104,7 @@ void indicePropietario(ePropietario usuarios[], int tamanio)
  * \return
  *
  */
-void cargarPropietario(ePropietario propietarios[], int tamanio)
+int cargarPropietario(ePropietario propietarios[], int tamanio)
 {
     int i;
     int id[]= {1,2,3,4};
@@ -122,6 +121,7 @@ void cargarPropietario(ePropietario propietarios[], int tamanio)
     propietarios[i].status=1;
 
     }
+    return 1;
 
 }
 
@@ -136,7 +136,7 @@ void cargarPropietario(ePropietario propietarios[], int tamanio)
 
   void showOneClient (ePropietario usuarios)
 {
- printf("\nidProp %d  Nombre y Apellido: %s   Direccion %s   Tarjeta :%s   e:%d"  , usuarios.idPropietario , usuarios.nombreyApellido , usuarios.direccion,usuarios.tarjetaCredito, usuarios.status);
+ printf("\nidProp %d  Nom y Ap: %8s   Direccion %8s   Tarjeta :%5s   e:%d"  , usuarios.idPropietario , usuarios.nombreyApellido , usuarios.direccion,usuarios.tarjetaCredito, usuarios.status);
 }
 
 /** \brief mostrar listado de usuario/socio/cliente
@@ -146,10 +146,16 @@ void cargarPropietario(ePropietario propietarios[], int tamanio)
  * \return
  *
  */
-  void listadoDePropietario (ePropietario users [], int tamanio)
+  void listadoDePropietario (ePropietario users [], int tamanio, int flag)
  {
       int i;
-      printf("\n\n\n========================\n PROPIETARIOS CARGADOS\n========================\n");
+            if(flag==0)
+            {
+                printf("\n\n\n======================\n NO HAY PROPIETARIOS CARGADOS\n======================\n");
+            }
+            else
+            {
+                printf("\n\n\n========================\n PROPIETARIOS CARGADOS\n========================\n");
                 for (i=0; i<tamanio; i++)
                 {
                     if (users[i].status==1)
@@ -158,31 +164,10 @@ void cargarPropietario(ePropietario propietarios[], int tamanio)
                     }
 
                 }
+            }
  }
 
- /** \brief mostrar listado de usuario/socio/cliente
- *
- * \param  array estrcutura de usuario/socio/cliente
- * \param  cantidad maxima de usuario/socio/cliente
-  * \param  flag general de carga de usuarios;
- * \return
- *
- */
-void mostrarCliente (ePropietario users[], int tamanio, int flag)
-{
-    int i;
-            if(flag==0)
-            {
-                printf("\n\n\n======================\n NO HAY PROPIETARIOS CARGADOS\n======================\n");
-            }
-            else
-            {
-                listadoDePropietario(users, tamanio);
-                printf("\n========================================================================\n");
-            }
 
-
-}
 
 /** \brief DAR DE BAJA UN USUARIO PASANDO A 2 SU STATUS
  *
@@ -207,9 +192,7 @@ int confirm;
             }
         else
             {
-               listadoDePropietario(users, tamanio);
-                printf("\n========================================================================\n");
-
+                listadoDePropietario(users, tamanio, flag);
                 printf("\n========================================================================\n");
                 printf("\n\n Ingrese el Id del propietario que desea dar de BAJA:\t");
                 scanf("%d", &idAux);
@@ -220,9 +203,29 @@ int confirm;
                                 if (users[i].idPropietario== idAux)
                                     {
                                      confirm =preguntarSiNo("Seguro que desea borrar el socio:\t");
-                                    break;
+                                     flagDelete=1;
+                                      if (confirm == 's')
+                                        {
+                                        users[i].status=0;
+                                        printf("\n\n======================================\n");
+                                        printf("Usuario borrado: %s , con el Id  Nro: %d", users[i].nombreyApellido, users[i].idPropietario);
+                                        printf("\n======================================\n");
+                                        flagDelete=1;
+                                        break;
+                                        }
+                                        else
+                                        {
+                                        printf("\n\n==========================================\n");
+                                        printf("Operacion Cancelada");
+                                        printf("\n==========================================\n");
+                                        break;
+                                        }
+                                     }
+
                                     }
-                            }
+
+
+                        }    // fin else =!0
 
                 if (flagDelete==0)
                          {
@@ -232,34 +235,7 @@ int confirm;
                             printf("\n=====================================\n");
 
                          }
-               else if (confirm == 's')
-               {
-                   for (i=0; i<tamanio;i++)
-                    {
-                        if (users[i].idPropietario== idAux)
-                            {
-                            users[i].status=0;
-                            printf("\n\n======================================\n");
-                            printf("Usuario borrado: %s , con el Id  Nro: %d", users[i].nombreyApellido, users[i].idPropietario);
-                            printf("\n======================================\n");
-                            flagDelete=1;
-                            break;
-                            }
-                    }
-                if (flagDelete==0)
-                    {
-                            printf("\n\n==========================================\n");
-                            printf("El PROPIETARIOS que desea borrar no existe");
-                            printf("\n==========================================\n");
-                    }
-               }
-               else
-               {
-                            printf("\n\n==========================================\n");
-                            printf("Operacion Cancelada");
-                            printf("\n==========================================\n");
-               }
-            }
+
 
 }
 
@@ -284,42 +260,26 @@ int confirm;
 
               if(flag!=0)
                {
-               listadoDePropietario(users, tamanio);
+               listadoDePropietario(users, tamanio, flag);
                printf("\n===================================================================================\n");
                printf("\n\n Ingrese el Id del PROPIETARIO que desea Modificar:\t");
                scanf("%d", &idAux);
-                flagchange=0;
                for (i=0; i<tamanio;i++)
                             {
                                 if (users[i].idPropietario== idAux)
                                     {
+                                    flagchange=1;
+                                    printf("\n---------------------------------------------------------");
+                                    printf("\n El cliente a modificar es\n");
+                                    showOneClient(users[i]);
+                                    printf("\n---------------------------------------------------------------\n");
                                     confirm =preguntarSiNo("\n Seguro que desea modificar el propietario:\t");
-                                    break;
-                                    }
-                            }
-
-               if (flagchange==0)
-                         {
-
-                            printf("\n\n=====================================\n");
-                            printf("PROPIETARIO NO EXISTE");
-                            printf("\n=====================================\n");
-
-                         }
-
-                else if( confirm == 's')
-                    {
-                        for (i=0; i<tamanio;i++)
-                        {
-                            if (users[i].idPropietario == idAux)
-                                {
-                                flagchange=1;
-                                printf("\n \nEl cliente a modificar es\n");
-                                showOneClient(users[i]);
-
-                                printf("\n=========================\nOPCIONES \n 1- Nombre y Apellido \n 2- Direccion \n 3- Tarjeta de Credito \n \t \t Que dato desea modificar?\t");
-                                scanf ("%d", &opcion);
-                                switch(opcion)
+                                    if( confirm == 's')
+                                    {
+                                    cleanScreen();
+                                    printf("\n=========================\n\n  == OPCIONES== \n\n 1- Nombre y Apellido \n 2- Direccion \n 3- Tarjeta de Credito \n \t \t Que dato desea modificar?\t");
+                                    scanf ("%d", &opcion);
+                                    switch(opcion)
                                         {
                                         case 1:
                                              printf("Ingrese el NUEVO nombre y apellido:\t");
@@ -340,33 +300,40 @@ int confirm;
                                             printf("No ingreso una opcion valida");
                                              break;
 
-                                                                            }
+                                                                          }
 
-                                printf("\n\n\n======================\n Propietario modificado\n======================\n");
-                                flagchange=1;
-                                showOneClient(users[i]);
-                                break;
-                                }
-                        }
+                                        printf("\n\n\n======================\n Propietario modificado\n======================\n");
 
+                                        break;
+                                    }// fin IF PREGUNTA S N
+                                    else
+                                    {
+                                    printf("\n\n=====================================\n");
+                                    printf("OPERACION CANCELADA");
+                                    printf("\n=====================================\n");
+                                    }
 
-                    }
-                    else
-                {
-                printf("\n\n=====================================\n");
-                printf("OPERACION CANCELADA");
-                printf("\n=====================================\n");
-                }
+                                    break;
+                                    } //FIN IF SI
+                            } //FIN FOR
 
+               if (flagchange==0)
+                         {
 
-            }
-            else
+                            printf("\n\n=====================================\n");
+                            printf("PROPIETARIO NO EXISTE");
+                            printf("\n=====================================\n");
+
+                         }
+               }// FIN FLAG !=0
+
+                else
                 {
                 printf("\n\n=====================================\n");
                 printf("NO HAY PROPIETARIOS CARGADOS");
                 printf("\n=====================================\n");
                 }
 
- }
 
+ }
 

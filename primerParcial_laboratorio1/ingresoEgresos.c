@@ -28,6 +28,7 @@ void indiceIngresoyEgreso(eIngresoyEgreso ingresos [], int tamanio)
     {
     ingresos[i].status=0;
     ingresos [i].idPropietario= 0;
+
      }
 }
 
@@ -38,24 +39,24 @@ void indiceIngresoyEgreso(eIngresoyEgreso ingresos [], int tamanio)
  * \return
  *
  */
-void cargarIngresos(eIngresoyEgreso ingresos [], int tamanio)
+int cargarIngresos(eIngresoyEgreso ingresos [], int tamanio)
 {
     int i;
-     int id[]= {1,2,3,4,5,6,7,8,9,10};
+    int id[]= {1,2,3,4,5,6,7,8,9,10};
     char patente[][20]= {"AAA","CCC","DDD","BBB","ZZZ","III","HHH","EEE","FFF","GGG"};
     int marca[]= {1,3,3,2,2,3,3,4,3,1};
     int propietario[]= {2,1,2,1,3,3,4,1,4,3};
-     for (i=0 ; i<tamanio;i++)
+    for (i=0 ; i<tamanio;i++)
     {
     ingresos [i].idPropietario=propietario[i];
     strcpy(ingresos [i].patente,patente[i]);
     ingresos [i].marca=marca[i];
     ingresos[i].idIngresoEgreso=id[i];
-    ingresos[i].hora=12;
+    ingresos[i].hora=devolverHorasEstadia();
     ingresos[i].status=1;
     }
 
-
+    return 1;
    }
 
 /** \brief recibir ingreso
@@ -67,7 +68,7 @@ void cargarIngresos(eIngresoyEgreso ingresos [], int tamanio)
  * \return
  *
  */
- void recibiringreso(eIngresoyEgreso ingreso [], ePropietario propiestarios[],int CantLugares, int CantPropietarios)
+ void recibiringreso(eIngresoyEgreso ingreso [], ePropietario propiestarios[],int CantLugares, int CantPropietarios, int flag)
     {
      int i;
      int j;
@@ -87,7 +88,7 @@ for (i=0; i <CantLugares; i++) // recorro los lugares disponible
     {
         flagIndex=1;
 
-        listadoDePropietario(propiestarios, CantPropietarios);
+        listadoDePropietario(propiestarios, CantPropietarios, flag);
         printf("\n\nIngrese el id del propietario ingresante :");
         scanf("%d", &idClienteAux);
 
@@ -95,8 +96,7 @@ for (i=0; i <CantLugares; i++) // recorro los lugares disponible
         {
             if(propiestarios[j].idPropietario== idClienteAux)
             {
-                printf("\n\nIngrese la hora :");
-                scanf("%d", &ingreso[i].hora);
+                ingreso[i].hora=devolverHorasEstadia();
 
                 flagProp=1;
 
@@ -234,7 +234,7 @@ int egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLuga
            if (idClienteAux==ingresoss[j].idIngresoEgreso) // si el cliente es igual al que busco
                 {
                 flag=1;
-                ingresoss[j].status=0;
+                ingresoss[j].status=2;
 
                 //EMITIR TICKET
                 tiempoTotal= auxTiempo-ingresoss[j].hora;
@@ -253,6 +253,8 @@ int egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLuga
                     precioFinal=tiempoTotal*250;
                     break;
                 }
+                ingresoss[j].totalPagado=precioFinal;
+
                 for (m=0; m<CantPropietarios; m++)
                 {
                     if (ingresoss[j].idPropietario==cliente[m].idPropietario)
@@ -354,3 +356,58 @@ int devolverHorasEstadia()
 
 }
 
+
+void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLugares, int CantPropietarios)
+{
+
+     int opcion =-1;
+
+        do
+        {
+        printf("\n===== BIENVENIDO Al Menu de Consultas =======\n\n");
+        printf ("\n 1- Recaudacacion Total");
+        printf ("\n 2- Recaudacion Total Por Marca");
+        printf ("\n 3- Buscar Propietario por ID y sus Patentes estacionadas");
+        printf ("\n 4- Todos los datos de los propietarios cuyos autos estacionados sean de la marca AUDI");
+        printf ("\n 5- Listado de autos estacionados con sus propietarios, ordenado por patente");
+        printf ("\n 0- Salir");
+        printf ("\n\n\t Ingrese la opcion deseada:  ");
+        scanf("%d", &opcion);
+
+    switch (opcion)
+        {
+        case 1:
+            printf("\n \t============ Recaudacacion Total ================ \n");
+
+            cleanScreen();
+            break;
+        case 2 :
+            printf("\n ============ Recaudacion Total Por Marca ================ \n");
+
+            cleanScreen();
+            break;
+         case 3:
+            printf("\n ============ Buscar Propietario por ID y sus Patentes estacionadas ================ \n");
+
+            cleanScreen();
+            break;
+        case 4:
+            printf("\n \t============ Todos los datos de los propietarios cuyos autos estacionados sean de la marca AUDI ================ \n");
+
+            cleanScreen();
+            break;
+        case 5:
+            printf("\n \t============ Listado de autos estacionados con sus propietarios, ordenado por patente ================ \n");
+
+            cleanScreen();
+            break
+         case 0:
+            printf("\n ============ Usted ha salido ================ \n");
+            break;
+         default:
+            printf("no ha ingresado una opcion valida");
+            printf("\n");
+            system ("cls");
+            break;
+    }
+}

@@ -22,22 +22,21 @@
 
 int main()
 {
-  int opcion =-1;
-  int flagProp=1;
-  int flagAux=1;
-  int flagIngreso=1;
+    int opcion =-1;
+    int flagProp=0;
+    int flagIngreso=0;
 
         ePropietario propietario[CantPropietarios];
         eIngresoyEgreso ingresoEgreso [CantLugares];
 
-      indicePropietario(propietario, CantPropietarios);
-      cargarPropietario(propietario, 4);
+        indicePropietario(propietario, CantPropietarios);
+        flagProp= cargarPropietario(propietario, 4);
 
-      indiceIngresoyEgreso(ingresoEgreso, CantLugares);
-      cargarIngresos(ingresoEgreso, 10);
+        indiceIngresoyEgreso(ingresoEgreso, CantLugares);
+        flagIngreso= cargarIngresos(ingresoEgreso, 10);
 do
 {
-printf("\n===== BIENVENIDO Al Estaciionamiento =======\n\n");
+printf("\n===== BIENVENIDO Al Estacionamiento =======\n\n");
 printf ("\n 1- Alta Propietarios");
 printf ("\n 2- Modificacion Propietario");
 printf ("\n 3- Baja Propietario");
@@ -55,9 +54,9 @@ scanf("%d", &opcion);
             flagProp= altaCliente(propietario, CantPropietarios);
             cleanScreen();
             break;
- case 2 :
+        case 2 :
             printf("\n ============ Modificacion Propietario ================ \n");
-           modificarPropietario(propietario, CantPropietarios, flagProp);
+            modificarPropietario(propietario, CantPropietarios, flagProp);
             cleanScreen();
             break;
          case 3:
@@ -65,40 +64,40 @@ scanf("%d", &opcion);
             if (flagProp==1 )
             {
             bajaCliente(propietario, CantPropietarios, flagProp);
-            cleanScreen();
             }
+            else
+            {
+            printf("\n     === NO HAY PROPIETARIOS CARGADOS === \n");
+            }
+            cleanScreen();
             break;
         case 4:
             printf("\n \t============ Ingreso Automovil ================ \n");
             if (flagProp==1)
             {
-                flagIngreso=1;
-            recibiringreso(ingresoEgreso,propietario, CantLugares, CantPropietarios);
-            cleanScreen();
+            flagIngreso=1;
+            recibiringreso(ingresoEgreso,propietario, CantLugares, CantPropietarios, flagProp);
             }
+            cleanScreen();
             break;
         case 5:
-            printf("\n ============ Egreso Automovil ================ \n");
+           printf("\n ============ Egreso Automovil ================ \n");
            if (flagIngreso!=0)
            {
                finzalarIngreso(ingresoEgreso,propietario,CantLugares, CantPropietarios);
-               cleanScreen();
-           }
+            }
            else
             {
-            printf("\n ============ No hay autos ingresados ================ \n");
+            printf("\n ============ No hay autos Ingresados ================ \n");
            }
-
+           cleanScreen();
             break;
-            /*
+
          case 6:
             printf("\n ============ Consultas ================ \n");
-            if (flagSocios==1 && flagAmbu == 1 )
-            {
-              menuLlamadas(llamada,socios,ambulancias,CantLlamadas,CantSocios, CantAmbulancias);
-            }
+            menuConsulta(ingresoEgreso,propietario,CantLugares, CantPropietarios);
             cleanScreen();
-            break;*/
+            break;
         case 0:
             printf("\n ============ Usted ha salido ================ \n");
             break;

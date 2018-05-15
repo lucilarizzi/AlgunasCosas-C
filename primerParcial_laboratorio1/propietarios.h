@@ -59,7 +59,7 @@ void cargarSocios(ePropietario [], int );
  * \return
  *
  */
-void listadoDePropietario (ePropietario [], int );
+void listadoDePropietario (ePropietario [], int, int );
 
 /** \brief mostrar 1 datos de 1 usuario/socio/cliente
  *
@@ -69,16 +69,6 @@ void listadoDePropietario (ePropietario [], int );
  */
 void showOneClient (ePropietario);
 
-
- /** \brief mostrar listado de usuario/socio/cliente
- *
- * \param  array estrcutura de usuario/socio/cliente
- * \param  cantidad maxima de usuario/socio/cliente
-  * \param  flag general de carga de usuarios;
- * \return
- *
- */
-void mostrarCliente (ePropietario [], int , int );
 
 
 /** \brief DAR DE BAJA UN USUARIO PASANDO A 2 SU STATUS
@@ -102,6 +92,15 @@ void bajaCliente(ePropietario [], int, int );
  *
  */
  void modificarPropietario (ePropietario [], int, int );
+
+ /** \brief Carga de Datos Inicial para poder operar
+ *
+ * \param estructura de usuarios/cliente/socio
+ * \param tamanio total del array de usuarios/cliente/socio
+ * \return
+ *
+ */
+int cargarPropietario(ePropietario propietarios[], int tamanio);
 
 
 

@@ -14,6 +14,7 @@ typedef struct
     int status;
     int numeroTarjetaCredito;
     int hora;
+    int totalPagado;
 
 } eIngresoyEgreso;
 
@@ -33,7 +34,7 @@ void indiceIngresoyEgreso(eIngresoyEgreso  [], int );
  * \return
  *
  */
-void cargarIngresos(eIngresoyEgreso ingresos [], int tamanio);
+int cargarIngresos(eIngresoyEgreso ingresos [], int tamanio);
 
 /** \brief recibir ingreso
  *
@@ -44,7 +45,7 @@ void cargarIngresos(eIngresoyEgreso ingresos [], int tamanio);
  * \return
  *
  */
- void recibiringreso(eIngresoyEgreso ingreso [], ePropietario propiestarios[],int CantLugares, int CantPropietarios);
+ void recibiringreso(eIngresoyEgreso ingreso [], ePropietario propiestarios[],int CantLugares, int CantPropietarios, int);
 
  /** \brief LISTADO DE ingresos
  *
