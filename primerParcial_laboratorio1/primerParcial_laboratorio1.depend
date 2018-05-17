@@ -197,7 +197,7 @@
 	"propietarios.h"
 	"ingresoEgresos.h"
 
-1526574006 source:c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\propietarios.c
+1526582189 source:c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\propietarios.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -205,7 +205,7 @@
 	"propietarios.h"
 	"ingresoEgresos.h"
 
-1526580322 source:c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\ingresoegresos.c
+1526582632 source:c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\ingresoegresos.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>

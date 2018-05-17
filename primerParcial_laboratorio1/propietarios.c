@@ -35,7 +35,13 @@ int  altaCliente (ePropietario propietario[], int tamanio)
                 printf("Ingrese el nombre y apellido:\t");
                 fflush(stdin);
                 gets(propietario[index].nombreyApellido);
-
+                 /*   while (!(isalpha(propietario[index].nombreyApellido)))
+                    {
+                    printf("No ingreso un caracter valido - Ingrese el nombre y apellido:\t");
+                    fflush(stdin);
+                    gets(propietario[index].nombreyApellido);
+                    }
+*/
                 printf("Ingrese el direccion:\t");
                 fflush(stdin);
                 gets(propietario[index].direccion);
@@ -43,7 +49,13 @@ int  altaCliente (ePropietario propietario[], int tamanio)
                 printf("Ingrese nro de tarjeta de credito:\t");
                 fflush(stdin);
                 gets(propietario[index].tarjetaCredito);
-
+            /*    while (isalpha(propietario[index].tarjetaCredito))
+                    {
+                    printf("No ingreso un caracter valido - Ingrese nro de tarjeta de credito:\t");
+                    fflush(stdin);
+                    gets(propietario[index].nombreyApellido);
+                    }
+*/
                 propietario[index].status=1;
                 flag=1;
 
@@ -229,6 +241,7 @@ int confirm;
 
                 if (flagDelete==0)
                          {
+                             fflush(stdin);
 
                             printf("\n\n=====================================\n");
                             printf("PROPIETARIO NO EXISTE");
@@ -261,23 +274,25 @@ int confirm;
               if(flag!=0)
                {
                listadoDePropietario(users, tamanio, flag);
-               printf("\n===================================================================================\n");
+               printf("\n============================================================================\n");
                printf("\n\n Ingrese el Id del PROPIETARIO que desea Modificar:\t");
                scanf("%d", &idAux);
+               cleanScreen();
                for (i=0; i<tamanio;i++)
                             {
                                 if (users[i].idPropietario== idAux)
                                     {
                                     flagchange=1;
-                                    printf("\n---------------------------------------------------------");
-                                    printf("\n El cliente a modificar es\n");
+                                    printf("\n----------------------------");
+                                    printf("\nEl cliente a modificar es\n");
                                     showOneClient(users[i]);
-                                    printf("\n---------------------------------------------------------------\n");
-                                    confirm =preguntarSiNo("\n Seguro que desea modificar el propietario:\t");
+                                    printf("\n-------------------------------------------------------------------------\n");
+                                    confirm =preguntarSiNo("\nSeguro que desea modificar el propietario:\t");
                                     if( confirm == 's')
                                     {
-                                    cleanScreen();
-                                    printf("\n=========================\n\n  == OPCIONES== \n\n 1- Nombre y Apellido \n 2- Direccion \n 3- Tarjeta de Credito \n \t \t Que dato desea modificar?\t");
+
+                                    do {
+                                    printf("\n\n\n  == OPCIONES DE DATOS A MODIFICAR == \n\n 1- Nombre y Apellido \n 2- Direccion \n 3- Tarjeta de Credito \n \t \t Que dato desea modificar?\t");
                                     scanf ("%d", &opcion);
                                     switch(opcion)
                                         {
@@ -297,10 +312,14 @@ int confirm;
                                             gets(users[i].tarjetaCredito);
                                             break;
                                         default:
-                                            printf("No ingreso una opcion valida");
+
+                                            fflush(stdin);
+                                            printf("\n -------- No ingreso una opcion valida -----------");
+                                            opcion=0;
                                              break;
 
-                                                                          }
+                                           }
+                                    }while (opcion ==0);
 
                                         printf("\n\n\n======================\n Propietario modificado\n======================\n");
 

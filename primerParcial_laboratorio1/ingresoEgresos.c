@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <time.h>
 
 #include "funciones.h"
 #include "propietarios.h"
@@ -72,10 +73,6 @@ int cargarIngresos(eIngresoyEgreso ingresos [], int tamanio)
     {
      int i;
      int j;
-     int k;
-     int l;
-     int m;
-     int n;
      int idClienteAux;
      int auxMarca;
      int flagProp=0;
@@ -151,7 +148,7 @@ for (i=0; i <CantLugares; i++) // recorro los lugares disponible
     {
           printf("\n\n=========== NO HAY LUGAR DISPONIBLE ==============");
     }
-    else
+    else if (flagProp==1)
     {
     printf("\n\n=========== AUTO INGRESADO ==============");
     }
@@ -160,33 +157,6 @@ for (i=0; i <CantLugares; i++) // recorro los lugares disponible
 
  }
 
-
- /** \brief FINALIZAR ingreso
- *
- * \param ARRAY ESTRUCTURA de ingresos
- * \param ARRAY ESTRUCTURA de propiestarioss
- * \param CANT DE ingresos
- * \param CANT DE propiestarios
- * \return
- *
- */
- void finzalarIngreso(eIngresoyEgreso ingreso [], ePropietario propiestarios[],int CantLugares, int CantPropietarios)
- {
-     int i;
-     int j;
-     int k;
-     int l;
-     int m;
-     int idAlquilerAux;
-     int idClienteAux;
-     int idEquipoAux;
-     int auxTiempo;
-     char seguir;
-     int flag=0;
-
-
-
-}
 
 
 
@@ -201,14 +171,11 @@ for (i=0; i <CantLugares; i++) // recorro los lugares disponible
  */
 void egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLugares, int CantPropietarios)
   {
-      int i;
       int j;
-       int m;
-      int precioFinal;
+      int m;
       int idClienteAux;
       int auxTiempo;
       int flag=0;
-      int tiempoTotal;
       int auxProp [20];
 
    auxTiempo=devolverHorasEstadia();
@@ -217,10 +184,9 @@ void egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLug
 
     printf("\n\nIngrese el id de INGRESO que desea dar de baja :");
     scanf("%d", &idClienteAux);
-
        for (j=0; j<CantLugares; j++) // recorro los clientes
         {
-           if (idClienteAux==ingresoss[j].idIngresoEgreso) // si el cliente es igual al que busco
+           if (idClienteAux==ingresoss[j].idIngresoEgreso && ingresoss[j].status==1) // si el cliente es igual al que busco
                 {
                 flag=1;
                 ingresoss[j].status=2;
@@ -270,6 +236,7 @@ void egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLug
           }
     if (flag==0)
          {
+             fflush(stdin);
              printf("\n\n=========== No existe el ingreso ==============\n");
          }
 }
@@ -301,7 +268,7 @@ void egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLug
          break;
      }
 
-     printf("\nIngreso: %3d\  Prop: %8d Marca: %8s  Estado %d " ,ingreso.idIngresoEgreso , ingreso.idPropietario, auxMarca , ingreso.status);
+     printf("\nIngreso: %3d  Prop: %8d Marca: %8s  Estado %d " ,ingreso.idIngresoEgreso , ingreso.idPropietario, auxMarca , ingreso.status);
  }
 
 
@@ -354,13 +321,14 @@ void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLu
 
         do
         {
-
         printf("\n===== Menu de Consultas =======\n");
         printf ("\n 1- Recaudacacion Total");
         printf ("\n 2- Recaudacion Total Por Marca");
         printf ("\n 3- Buscar Propietario por ID y sus Patentes estacionadas");
-        printf ("\n 4- Todos los datos de los propietarios cuyos autos estacionados sean de la marca AUDI");
-        printf ("\n 5- Listado de autos estacionados con sus propietarios, ordenado por patente");
+        printf ("\n 4- Todos los datos de los propietarios cuyos autos"
+                "\n    estacionados sean de la marca AUDI");
+        printf ("\n 5- Listado de autos estacionados con sus propietarios,"
+                "\n    ordenado por patente");
         printf ("\n 0- Salir");
         printf ("\n\n\t Ingrese la opcion deseada:  ");
         scanf("%d", &opcion);
@@ -398,9 +366,9 @@ void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLu
             printf("\n ============ Usted ha salido ================ \n");
             break;
          default:
-            printf("no ha ingresado una opcion valida");
-            printf("\n");
-            system ("cls");
+            printf("\n-----------no ha ingresado una opcion valida---------------\n");
+            fflush(stdin);
+            cleanScreen();
             break;
         }
     } while (opcion !=0);
@@ -416,7 +384,7 @@ void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLu
  *
  */
 
- int recaudacionTotal(eIngresoyEgreso ingresoss[], int CantLugares)
+void recaudacionTotal(eIngresoyEgreso ingresoss[], int CantLugares)
  {
      int i;
      int acumulador=0;
@@ -486,6 +454,7 @@ void buscarPropySusPatentes (ePropietario propieta [] , eIngresoyEgreso ingresos
     int i;
     int j;
     int auxProp;
+    int flag2=0;
 
     listadoDePropietario(propieta, CantPropietarios, flag );
     printf("\n Ingrese el numero de id del propietario que desea ver las patentes");
@@ -496,6 +465,7 @@ void buscarPropySusPatentes (ePropietario propieta [] , eIngresoyEgreso ingresos
 
          if (propieta[i].idPropietario  ==auxProp)
          {
+             flag2=1;
              for (j=0; j<CantLugares; j++)
                 {
                     if (ingresos[j].idPropietario== propieta[i].idPropietario)
@@ -507,7 +477,14 @@ void buscarPropySusPatentes (ePropietario propieta [] , eIngresoyEgreso ingresos
          } //ir propieda.idprop
 
      }
+                if (flag2==0)
+                    {
 
+                    printf("\n\n=====================================\n");
+                    printf("PROPIETARIO NO EXISTE");
+                    printf("\n=====================================\n");
+
+                     }
 
 
 }
