@@ -85,3 +85,46 @@
 	"propietarios.h"
 	"ingresoEgresos.h"
 
+1526426637 source:c:\users\lucil\desktop\funciones\primerparcial_laboratorio1\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+
+1526426637 c:\users\lucil\desktop\funciones\primerparcial_laboratorio1\funciones.h
+
+1526426637 c:\users\lucil\desktop\funciones\primerparcial_laboratorio1\propietarios.h
+
+1526429959 c:\users\lucil\desktop\funciones\primerparcial_laboratorio1\ingresoegresos.h
+	"funciones.h"
+	"propietarios.h"
+
+1526430195 source:c:\users\lucil\desktop\funciones\primerparcial_laboratorio1\ingresoegresos.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+
+1526430706 source:c:\users\lucil\desktop\funciones\primerparcial_laboratorio1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+
+1526426637 source:c:\users\lucil\desktop\funciones\primerparcial_laboratorio1\propietarios.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+

@@ -13,10 +13,10 @@
 #define CantPropietarios 10
 #define CantLugares 20
 
-#define auto1 "Alpha_Romeo"
-#define auto2 "Ferrari"
-#define auto3 "Audio"
-#define auto4 "Otro"
+#define Alpha_Romeo 1
+#define Ferrari 2
+#define Audio 3
+#define Otro 4
 
 
 
@@ -84,7 +84,7 @@ scanf("%d", &opcion);
            printf("\n ============ Egreso Automovil ================ \n");
            if (flagIngreso!=0)
            {
-               finzalarIngreso(ingresoEgreso,propietario,CantLugares, CantPropietarios);
+               egresarAuto(ingresoEgreso,propietario,CantLugares, CantPropietarios);
             }
            else
             {
@@ -94,7 +94,8 @@ scanf("%d", &opcion);
             break;
 
          case 6:
-            printf("\n ============ Consultas ================ \n");
+            system ("cls");
+           // printf("\n ============ Consultas ================ \n");
             menuConsulta(ingresoEgreso,propietario,CantLugares, CantPropietarios);
             cleanScreen();
             break;

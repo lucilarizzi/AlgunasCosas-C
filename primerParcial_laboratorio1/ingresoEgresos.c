@@ -52,9 +52,9 @@ int cargarIngresos(eIngresoyEgreso ingresos [], int tamanio)
     strcpy(ingresos [i].patente,patente[i]);
     ingresos [i].marca=marca[i];
     ingresos[i].idIngresoEgreso=id[i];
-    ingresos[i].hora=devolverHorasEstadia();
     ingresos[i].status=1;
     }
+
 
     return 1;
    }
@@ -96,8 +96,6 @@ for (i=0; i <CantLugares; i++) // recorro los lugares disponible
         {
             if(propiestarios[j].idPropietario== idClienteAux)
             {
-                ingreso[i].hora=devolverHorasEstadia();
-
                 flagProp=1;
 
                 ingreso[i].status=1;
@@ -186,16 +184,7 @@ for (i=0; i <CantLugares; i++) // recorro los lugares disponible
      char seguir;
      int flag=0;
 
-    flag=egresarAuto(ingreso, propiestarios,CantLugares, CantPropietarios);
-    if (flag==0)
-         {
-             printf("\n\n=========== No existe la ingreso ==============\n");
-         }
-    else
-         {
 
-
-         }
 
 }
 
@@ -210,7 +199,7 @@ for (i=0; i <CantLugares; i++) // recorro los lugares disponible
  * \return
  *
  */
-int egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLugares, int CantPropietarios)
+void egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLugares, int CantPropietarios)
   {
       int i;
       int j;
@@ -235,41 +224,39 @@ int egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLuga
                 {
                 flag=1;
                 ingresoss[j].status=2;
-
-                //EMITIR TICKET
-                tiempoTotal= auxTiempo-ingresoss[j].hora;
+                ingresoss[j].tiempoTranscurrido =devolverHorasEstadia();
                 switch (ingresoss[j].marca)
                 {
                 case 1:
-                    precioFinal=tiempoTotal*150;
+                    ingresoss[j].totalPagado =ingresoss[j].tiempoTranscurrido*150;
                     break;
                 case 2:
-                    precioFinal=tiempoTotal*175;
+                    ingresoss[j].totalPagado=ingresoss[j].tiempoTranscurrido*175;
                     break;
                 case 3:
-                    precioFinal=tiempoTotal*200;
+                    ingresoss[j].totalPagado=ingresoss[j].tiempoTranscurrido*200;
                     break;
                 case 4:
-                    precioFinal=tiempoTotal*250;
+                    ingresoss[j].totalPagado=ingresoss[j].tiempoTranscurrido*250;
                     break;
                 }
-                ingresoss[j].totalPagado=precioFinal;
+
 
                 for (m=0; m<CantPropietarios; m++)
                 {
                     if (ingresoss[j].idPropietario==cliente[m].idPropietario)
                     {
-                         strcpy(auxProp,cliente[m].nombreyApellido);
-                         break;
+                            strcpy(auxProp,cliente[m].nombreyApellido);
+                            break;
                     }
                 }
 
 
                 mostraringreso(ingresoss[j]);
                 printf("\n---------------------------");
-                printf("\nEl propietario es %s",auxProp);
-                printf("\nLa cantidad de tiempo transcurrido es %d", tiempoTotal);
-                printf("\nEl Monto a abonar %d", precioFinal);
+                printf("\nEl propietario es:%10s",auxProp);
+                printf("\nTiempo transcurrido:%6d Hrs", ingresoss[j].tiempoTranscurrido);
+                printf("\nEl Monto a abonar :$%8d", ingresoss[j].totalPagado);
                 printf("\n---------------------------");
 
 
@@ -281,7 +268,10 @@ int egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLuga
 
 
           }
-          return flag;
+    if (flag==0)
+         {
+             printf("\n\n=========== No existe el ingreso ==============\n");
+         }
 }
 
 
@@ -311,7 +301,7 @@ int egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLuga
          break;
      }
 
-     printf("\nIngreso: %d\ Propietario: %d Marca: %s Hr Ingreso:%d  Estado %d " ,ingreso.idIngresoEgreso , ingreso.idPropietario, auxMarca ,ingreso.hora, ingreso.status);
+     printf("\nIngreso: %3d\  Prop: %8d Marca: %8s  Estado %d " ,ingreso.idIngresoEgreso , ingreso.idPropietario, auxMarca , ingreso.status);
  }
 
 
@@ -364,7 +354,8 @@ void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLu
 
         do
         {
-        printf("\n===== BIENVENIDO Al Menu de Consultas =======\n\n");
+
+        printf("\n===== Menu de Consultas =======\n");
         printf ("\n 1- Recaudacacion Total");
         printf ("\n 2- Recaudacion Total Por Marca");
         printf ("\n 3- Buscar Propietario por ID y sus Patentes estacionadas");
@@ -378,12 +369,12 @@ void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLu
         {
         case 1:
             printf("\n \t============ Recaudacacion Total ================ \n");
-
+            recaudacionTotal(ingresoss, CantLugares);
             cleanScreen();
             break;
         case 2 :
             printf("\n ============ Recaudacion Total Por Marca ================ \n");
-
+            recaudacionTotalPorMarca(ingresoss, CantLugares);
             cleanScreen();
             break;
          case 3:
@@ -400,7 +391,7 @@ void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLu
             printf("\n \t============ Listado de autos estacionados con sus propietarios, ordenado por patente ================ \n");
 
             cleanScreen();
-            break
+            break;
          case 0:
             printf("\n ============ Usted ha salido ================ \n");
             break;
@@ -409,5 +400,80 @@ void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLu
             printf("\n");
             system ("cls");
             break;
-    }
+        }
+    } while (opcion !=0);
 }
+
+
+
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
+
+ int recaudacionTotal(eIngresoyEgreso ingresoss[], int CantLugares)
+ {
+     int i;
+     int acumulador=0;
+
+     for (i=0; i<CantLugares; i++)
+     {
+
+         if (ingresoss[i].status==2)
+         {
+             acumulador=acumulador+ ingresoss[i].totalPagado;
+         }
+
+     }
+
+     printf("\n\tEl monto total recaudado hasta el momento es $%d\n \n", acumulador);
+
+
+ }
+
+
+  int recaudacionTotalPorMarca(eIngresoyEgreso ingresoss[], int CantLugares)
+ {
+     int i;
+     int acumulador1=0;
+     int acumulador2=0;
+     int acumulador3=0;
+     int acumulador4=0;
+     int acumuladorTotal=0;
+
+     for (i=0; i<CantLugares; i++)
+     {
+
+         if (ingresoss[i].status==2)
+         {
+             switch (ingresoss[i].marca)
+             {
+             case 1:
+                acumulador1=acumulador1+ingresoss[i].totalPagado;
+                break;
+             case 2:
+                acumulador2=acumulador1+ingresoss[i].totalPagado;
+                break;
+             case 3:
+                acumulador3=acumulador1+ingresoss[i].totalPagado;
+                break;
+             case 4:
+                acumulador4=acumulador1+ingresoss[i].totalPagado;
+                break;
+             }
+             acumuladorTotal=acumuladorTotal+ ingresoss[i].totalPagado;
+         }
+
+     }
+
+     printf("\n\tEl monto recaudado por la marca Alpha_Romeo hasta el momento es $%d\n \n", acumulador1);
+     printf("\n\tEl monto recaudado por la marca Ferrari  hasta el momento es $%d\n \n", acumulador2);
+     printf("\n\tEl monto recaudado por la marca Audio hasta el momento es $%d\n \n", acumulador3);
+     printf("\n\tEl monto recaudado por la marca Otro hasta el momento es $%d\n \n", acumulador4);
+     printf("\n\tEl monto TOTAL recaudado hasta el momento es $%d\n \n", acumuladorTotal);
+
+
+ }

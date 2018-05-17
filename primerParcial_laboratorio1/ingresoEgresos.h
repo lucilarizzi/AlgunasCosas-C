@@ -13,7 +13,7 @@ typedef struct
     int marca ;
     int status;
     int numeroTarjetaCredito;
-    int hora;
+    int tiempoTranscurrido;
     int totalPagado;
 
 } eIngresoyEgreso;
@@ -85,7 +85,7 @@ int cargarIngresos(eIngresoyEgreso ingresos [], int tamanio);
  * \return
  *
  */
-int egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLugares, int CantPropietarios);
+void egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLugares, int CantPropietarios);
 
 /** \brief
  *
@@ -96,6 +96,7 @@ int egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLuga
  */
 
 int devolverHorasEstadia();
+void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLugares, int CantPropietarios);
 
 
 #endif
