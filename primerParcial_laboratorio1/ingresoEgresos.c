@@ -10,7 +10,7 @@
 
 #define Alpha_Romeo 1
 #define Ferrari 2
-#define Audio 3
+#define Audi 3
 #define Otro 4
 
 
@@ -43,7 +43,7 @@ int cargarIngresos(eIngresoyEgreso ingresos [], int tamanio)
 {
     int i;
     int id[]= {1,2,3,4,5,6,7,8,9,10};
-    char patente[][20]= {"AAA010","CCC020","DDD020","BBB040","ZZZ050","III666","HHH","EEE635","FFF987","GGG123"};
+    char patente[][20]= {"AAA010","CCC020","DDD020","BBB040","ZZZ050","III666","HHH555","EEE635","FFF987","GGG123"};
     int marca[]= {1,3,3,2,2,3,3,4,3,1};
     int propietario[]= {2,1,2,1,3,3,4,1,4,3};
     for (i=0 ; i<tamanio;i++)
@@ -109,7 +109,7 @@ for (i=0; i <CantLugares; i++) // recorro los lugares disponible
                 do{
                 printf("\n 1- Alpha_Romeo");
                 printf("\n 2- Ferrari");
-                printf("\n 3- Audio");
+                printf("\n 3- Audi");
                 printf("\n 4- Otro");
                 printf("\nIngrese la marca:\t");
                 scanf("%d", &auxMarca);
@@ -288,7 +288,7 @@ void egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLug
      switch (ingreso.marca)
      {
          case 1:
-         strcpy(auxMarca, "Alpha_Romeo");
+         strcpy(auxMarca, "Alpha");
          break;
          case 2:
          strcpy(auxMarca, "Ferrari");
@@ -297,7 +297,7 @@ void egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLug
          strcpy(auxMarca, "Audi");
          break;
          case 4:
-         strcpy(auxMarca, "Audi");
+         strcpy(auxMarca, "Otro");
          break;
      }
 
@@ -373,7 +373,7 @@ void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLu
             cleanScreen();
             break;
         case 2 :
-            printf("\n ============ Recaudacion Total Por Marca ================ \n");
+            printf("\n \t============ Recaudacion Total Por Marca ================ \n");
             recaudacionTotalPorMarca(ingresoss, CantLugares);
             cleanScreen();
             break;
@@ -383,13 +383,15 @@ void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLu
             cleanScreen();
             break;
         case 4:
-            printf("\n \t============ Todos los datos de los propietarios cuyos autos estacionados sean de la marca AUDI ================ \n");
+            printf("\n ========= Propietarios cuyos autos estacionados sean de la marca AUDI =========\n");
             buscarAudi (cliente, ingresoss, CantPropietarios, CantLugares);
+
             cleanScreen();
             break;
         case 5:
-            printf("\n \t============ Listado de autos estacionados con sus propietarios, ordenado por patente ================ \n");
-
+            printf("\nListado de autos estacionados con sus propietarios, ordenado por patente\n");
+            printf("\n ==================================================================== \n");
+            autosPorPatente(cliente, ingresoss, CantPropietarios, CantLugares);
             cleanScreen();
             break;
          case 0:
@@ -455,13 +457,13 @@ void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLu
                 acumulador1=acumulador1+ingresoss[i].totalPagado;
                 break;
              case 2:
-                acumulador2=acumulador1+ingresoss[i].totalPagado;
+                acumulador2=acumulador2+ingresoss[i].totalPagado;
                 break;
              case 3:
-                acumulador3=acumulador1+ingresoss[i].totalPagado;
+                acumulador3=acumulador3+ingresoss[i].totalPagado;
                 break;
              case 4:
-                acumulador4=acumulador1+ingresoss[i].totalPagado;
+                acumulador4=acumulador4+ingresoss[i].totalPagado;
                 break;
              }
              acumuladorTotal=acumuladorTotal+ ingresoss[i].totalPagado;
@@ -469,8 +471,8 @@ void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLu
 
      }
 
-     printf("\n\tEl monto recaudado por la marca Alpha_Romeo hasta el momento es $%d\n \n", acumulador1);
-     printf("\n\tEl monto recaudado por la marca Ferrari  hasta el momento es $%d\n \n", acumulador2);
+     printf("\n\tEl monto recaudado por la marca Alpha_Romeo hasta el momento es $%d\n ", acumulador1);
+     printf("\n\tEl monto recaudado por la marca Ferrari  hasta el momento es $%d\n ", acumulador2);
      printf("\n\tEl monto recaudado por la marca Audio hasta el momento es $%d\n \n", acumulador3);
      printf("\n\tEl monto recaudado por la marca Otro hasta el momento es $%d\n \n", acumulador4);
      printf("\n\tEl monto TOTAL recaudado hasta el momento es $%d\n \n", acumuladorTotal);
@@ -517,13 +519,17 @@ void buscarAudi (ePropietario propieta [] , eIngresoyEgreso ingresos [] ,int Can
 
     for (i=0; i <CantLugares; i++)
      {
-         if (ingresos[i].marca == 3 )
-         {
+         if (ingresos[i].marca == 3 && ingresos[i].status==1)
+        {
+            printf("\nSe registro un AUDI en el ingreso nro %d:" , ingresos[i].idIngresoEgreso);
+
              for (j=0; j<CantPropietarios; j++)
                 {
-                    if (ingresos[i].idPropietario== propieta[j].idPropietario)
+                    if (ingresos[i].idPropietario== propieta[j].idPropietario && propieta[j].status==1)
                     {
                     showOneClient(propieta[j]);
+                    printf("\n");
+                    printf("\n");
                     }
                 }//fin for J
          } //ir propieda.idprop
@@ -533,4 +539,55 @@ void buscarAudi (ePropietario propieta [] , eIngresoyEgreso ingresos [] ,int Can
 
 
 }
+
+
+void autosPorPatente(ePropietario propieta [] , eIngresoyEgreso ingresos [] ,int CantPropietarios,int CantLugares)
+{
+    int i;
+    int j;
+    eIngresoyEgreso auxIngreso[CantLugares];
+        eIngresoyEgreso aux;
+
+
+    for (i=0; i <CantLugares-1; i++)
+     {
+         auxIngreso[i]=ingresos[i];
+     }
+
+
+
+    for (i=0; i <CantLugares-1; i++)
+     {
+            for (j=i+1; j<CantLugares; j++)
+            {
+               if(stricmp(auxIngreso[i].patente, auxIngreso[j].patente)>0)
+               {
+                   aux= auxIngreso[i];
+                   auxIngreso[i]=auxIngreso[j];
+                   auxIngreso[j]=aux;
+               } //if
+            }//for j
+     }// for i
+
+    for (i=0; i <CantLugares; i++)
+     {
+         if (auxIngreso[i].status==1)
+            {
+            printf("\nDominio: %s",auxIngreso[i].patente);
+            for (j=0; j<CantPropietarios; j++)
+            {
+               if(auxIngreso[i].idPropietario==propieta[j].idPropietario && auxIngreso[i].status==1 && propieta[j].status==1)
+               {
+                  showOneClient(propieta[j]);
+                  printf("\n");
+               } //if
+            }//for j
+            }
+     }// for i
+
+
+
+}
+
+
 
