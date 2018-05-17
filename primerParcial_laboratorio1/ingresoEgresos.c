@@ -43,7 +43,7 @@ int cargarIngresos(eIngresoyEgreso ingresos [], int tamanio)
 {
     int i;
     int id[]= {1,2,3,4,5,6,7,8,9,10};
-    char patente[][20]= {"AAA","CCC","DDD","BBB","ZZZ","III","HHH","EEE","FFF","GGG"};
+    char patente[][20]= {"AAA010","CCC020","DDD020","BBB040","ZZZ050","III666","HHH","EEE635","FFF987","GGG123"};
     int marca[]= {1,3,3,2,2,3,3,4,3,1};
     int propietario[]= {2,1,2,1,3,3,4,1,4,3};
     for (i=0 ; i<tamanio;i++)
@@ -347,7 +347,7 @@ int devolverHorasEstadia()
 }
 
 
-void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLugares, int CantPropietarios)
+void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLugares, int CantPropietarios, int flag)
 {
 
      int opcion =-1;
@@ -379,12 +379,12 @@ void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLu
             break;
          case 3:
             printf("\n ============ Buscar Propietario por ID y sus Patentes estacionadas ================ \n");
-
+            buscarPropySusPatentes (cliente, ingresoss, CantPropietarios, CantLugares, flag);
             cleanScreen();
             break;
         case 4:
             printf("\n \t============ Todos los datos de los propietarios cuyos autos estacionados sean de la marca AUDI ================ \n");
-
+            buscarAudi (cliente, ingresoss, CantPropietarios, CantLugares);
             cleanScreen();
             break;
         case 5:
@@ -477,3 +477,60 @@ void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLu
 
 
  }
+
+
+void buscarPropySusPatentes (ePropietario propieta [] , eIngresoyEgreso ingresos [] ,int CantPropietarios,int CantLugares, int flag)
+{
+    int i;
+    int j;
+    int auxProp;
+
+    listadoDePropietario(propieta, CantPropietarios, flag );
+    printf("\n Ingrese el numero de id del propietario que desea ver las patentes");
+    scanf("%d", &auxProp);
+
+     for (i=0; i < CantPropietarios; i++)
+     {
+
+         if (propieta[i].idPropietario  ==auxProp)
+         {
+             for (j=0; j<CantLugares; j++)
+                {
+                    if (ingresos[j].idPropietario== propieta[i].idPropietario)
+                    {
+                        printf("\n la patente del propietario es %s", ingresos[j].patente);
+
+                    }
+                }//fin for J
+         } //ir propieda.idprop
+
+     }
+
+
+
+}
+
+void buscarAudi (ePropietario propieta [] , eIngresoyEgreso ingresos [] ,int CantPropietarios,int CantLugares)
+{
+    int i;
+    int j;
+
+    for (i=0; i <CantLugares; i++)
+     {
+         if (ingresos[i].marca == 3 )
+         {
+             for (j=0; j<CantPropietarios; j++)
+                {
+                    if (ingresos[i].idPropietario== propieta[j].idPropietario)
+                    {
+                    showOneClient(propieta[j]);
+                    }
+                }//fin for J
+         } //ir propieda.idprop
+
+     }
+
+
+
+}
+

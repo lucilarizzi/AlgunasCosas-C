@@ -96,7 +96,9 @@ void egresarAuto(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLug
  */
 
 int devolverHorasEstadia();
-void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLugares, int CantPropietarios);
+void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLugares, int CantPropietarios, int);
+
+void buscarPropySusPatentes (ePropietario propieta [] , eIngresoyEgreso ingresos [] ,int CantPropietarios,int CantLugares, int flag);
 
 
 #endif

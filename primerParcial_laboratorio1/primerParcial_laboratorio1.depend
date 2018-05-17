@@ -128,3 +128,46 @@
 	"propietarios.h"
 	"ingresoEgresos.h"
 
+1526559620 source:c:\test\rizzi\funciones\primerparcial_laboratorio1\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+
+1526559620 c:\test\rizzi\funciones\primerparcial_laboratorio1\funciones.h
+
+1526559620 c:\test\rizzi\funciones\primerparcial_laboratorio1\propietarios.h
+
+1526560311 c:\test\rizzi\funciones\primerparcial_laboratorio1\ingresoegresos.h
+	"funciones.h"
+	"propietarios.h"
+
+1526560220 source:c:\test\rizzi\funciones\primerparcial_laboratorio1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+
+1526559620 source:c:\test\rizzi\funciones\primerparcial_laboratorio1\propietarios.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+
+1526568639 source:c:\test\rizzi\funciones\primerparcial_laboratorio1\ingresoegresos.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones.h"
+	"propietarios.h"
+	"ingresoEgresos.h"
+

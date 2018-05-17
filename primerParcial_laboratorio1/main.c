@@ -96,7 +96,7 @@ scanf("%d", &opcion);
          case 6:
             system ("cls");
            // printf("\n ============ Consultas ================ \n");
-            menuConsulta(ingresoEgreso,propietario,CantLugares, CantPropietarios);
+            menuConsulta(ingresoEgreso,propietario,CantLugares, CantPropietarios, flagProp);
             cleanScreen();
             break;
         case 0:
