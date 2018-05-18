@@ -101,4 +101,15 @@ void menuConsulta(eIngresoyEgreso ingresoss[], ePropietario cliente[],int CantLu
 void buscarPropySusPatentes (ePropietario propieta [] , eIngresoyEgreso ingresos [] ,int CantPropietarios,int CantLugares, int flag);
 
 
+
+/** \brief DAR DE BAJA UN USUARIO PASANDO A 2 SU STATUS
+ *
+ * \param array estructura de usuario/socio/cliente
+ * \param tamanio de usuario/socio/cliente
+ * \param flag de prexistencia de carga de usuario/socio/cliente
+ * \return
+ *
+ */
+void bajaCliente(eIngresoyEgreso ingresoss [], ePropietario users[], int tamanio,int CantLugares, int flag);
+
 #endif

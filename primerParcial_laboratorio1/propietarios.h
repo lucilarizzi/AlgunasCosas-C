@@ -71,15 +71,6 @@ void showOneClient (ePropietario);
 
 
 
-/** \brief DAR DE BAJA UN USUARIO PASANDO A 2 SU STATUS
- *
- * \param array estructura de usuario/socio/cliente
- * \param tamanio de usuario/socio/cliente
- * \param flag de prexistencia de carga de usuario/socio/cliente
- * \return
- *
- */
-void bajaCliente(ePropietario [], int, int );
 
 
 /** \brief modificacion de usuario/socio/cliente

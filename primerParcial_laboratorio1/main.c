@@ -63,7 +63,7 @@ scanf("%d", &opcion);
             printf("\n ============ Baja Propietario ================ \n");
             if (flagProp==1 )
             {
-            bajaCliente(propietario, CantPropietarios, flagProp);
+            bajaCliente(ingresoEgreso, propietario, CantPropietarios, CantLugares, flagProp);
             }
             else
             {

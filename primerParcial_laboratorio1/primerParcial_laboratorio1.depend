@@ -171,7 +171,7 @@
 	"propietarios.h"
 	"ingresoEgresos.h"
 
-1526574006 source:c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\funciones.c
+1526658409 source:c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -180,15 +180,15 @@
 	"propietarios.h"
 	"ingresoEgresos.h"
 
-1526574006 c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\funciones.h
+1526658409 c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\funciones.h
 
-1526574006 c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\propietarios.h
+1526658563 c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\propietarios.h
 
-1526574006 c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\ingresoegresos.h
+1526658626 c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\ingresoegresos.h
 	"funciones.h"
 	"propietarios.h"
 
-1526575042 source:c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\main.c
+1526658607 source:c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -197,7 +197,7 @@
 	"propietarios.h"
 	"ingresoEgresos.h"
 
-1526582189 source:c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\propietarios.c
+1526658563 source:c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\propietarios.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -205,11 +205,12 @@
 	"propietarios.h"
 	"ingresoEgresos.h"
 
-1526582632 source:c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\ingresoegresos.c
+1526659389 source:c:\users\usuario\desktop\funciones\primerparcial_laboratorio1\ingresoegresos.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
 	<string.h>
+	<time.h>
 	"funciones.h"
 	"propietarios.h"
 	"ingresoEgresos.h"

@@ -567,4 +567,115 @@ void autosPorPatente(ePropietario propieta [] , eIngresoyEgreso ingresos [] ,int
 }
 
 
+/** \brief DAR DE BAJA UN USUARIO PASANDO A 2 SU STATUS
+ *
+ * \param array estructura de usuario/socio/cliente
+ * \param tamanio de usuario/socio/cliente
+ * \param flag de prexistencia de carga de usuario/socio/cliente
+ * \return
+ *
+ */
+
+void bajaCliente(eIngresoyEgreso ingresoss [], ePropietario users[], int tamanio,int CantLugares, int flag)
+{
+int flagDelete;
+int i;
+int j;
+int m;
+char auxProp[20];
+int idAux;
+int confirm;
+
+     if(flag==0)
+            {
+                printf("\n\n\n======================\n NO HAY PROPIETARIOS CARGADOS\n======================\n");
+            }
+        else
+            {
+                listadoDePropietario(users, tamanio, flag);
+                printf("\n========================================================================\n");
+                printf("\n\n Ingrese el Id del propietario que desea dar de BAJA:\t");
+                scanf("%d", &idAux);
+                printf("\n========================================================================\n");
+                flagDelete=0;
+                        for (i=0; i<tamanio;i++)
+                            {
+                                if (users[i].idPropietario== idAux&& users [i].status==1)
+                                    {
+                                     confirm =preguntarSiNo("Seguro que desea borrar el socio:\t");
+                                     flagDelete=1;
+                                      if (confirm == 's')
+                                        {
+                                        users[i].status=0;
+/////////////////////////////////////////////////
+                                       for (j=0; j<CantLugares; j++) // recorro los clientes
+                                        {
+                                       if (users[i].idPropietario==ingresoss[j].idPropietario && ingresoss[j].status==1) // si el cliente es igual al que busco
+                                            {
+                                            strcpy(auxProp,users[i].nombreyApellido);
+                                            ingresoss[j].status=2;
+                                            ingresoss[j].tiempoTranscurrido =devolverHorasEstadia();
+                                            switch (ingresoss[j].marca)
+                                            {
+                                            case 1:
+                                                ingresoss[j].totalPagado =ingresoss[j].tiempoTranscurrido*150;
+                                                break;
+                                            case 2:
+                                                ingresoss[j].totalPagado=ingresoss[j].tiempoTranscurrido*175;
+                                                break;
+                                            case 3:
+                                                ingresoss[j].totalPagado=ingresoss[j].tiempoTranscurrido*200;
+                                                break;
+                                            case 4:
+                                                ingresoss[j].totalPagado=ingresoss[j].tiempoTranscurrido*250;
+                                                break;
+                                            }
+
+
+                                            printf("\n\n\n-- TICKET PENDIENTE DE PAGO--\n");
+                                            mostraringreso(ingresoss[j]);
+                                            printf("\nTiempo transcurrido:%6d Hrs", ingresoss[j].tiempoTranscurrido);
+                                            printf("\nEl Monto a abonar :$%8d", ingresoss[j].totalPagado);
+                                            printf("\n---------------------------");
+                                            }
+                                        } //fin for j
+
+
+////////////////////////////////////////////////////////////////////
+                                        printf("\n\n======================================\n");
+                                        printf("Usuario borrado: %s , con el Id  Nro: %d", users[i].nombreyApellido, users[i].idPropietario);
+                                        printf("\n======================================\n");
+                                        flagDelete=1;
+                                        break;
+                                        } //fin if si
+                                        else
+                                        {
+                                        printf("\n\n==========================================\n");
+                                        printf("Operacion Cancelada");
+                                        printf("\n==========================================\n");
+                                        break;
+                                        } //if no
+                                     }
+
+                                    } //fin for I
+
+
+                        }    // fin else =!0
+
+                if (flagDelete==0)
+                         {
+                             fflush(stdin);
+
+                            printf("\n\n=====================================\n");
+                            printf("PROPIETARIO NO EXISTE");
+                            printf("\n=====================================\n");
+
+                         }
+
+
+}
+
+
+
+
 
