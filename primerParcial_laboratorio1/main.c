@@ -34,6 +34,7 @@ int main()
 
         indiceIngresoyEgreso(ingresoEgreso, CantLugares);
         flagIngreso= cargarIngresos(ingresoEgreso, 10);
+     //   cargarEgresos(ingresoEgreso, 10);
 do
 {
 printf("\n===== BIENVENIDO Al Estacionamiento =======\n\n");

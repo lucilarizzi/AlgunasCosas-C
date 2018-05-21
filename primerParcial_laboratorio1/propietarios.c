@@ -35,6 +35,8 @@ int  altaCliente (ePropietario propietario[], int tamanio)
                 printf("Ingrese el nombre y apellido:\t");
                 fflush(stdin);
                 gets(propietario[index].nombreyApellido);
+
+                //////////////////ARMAR FUNCION QUE RECORRE EL ARRAY
                  /*   while (!(isalpha(propietario[index].nombreyApellido)))
                     {
                     printf("No ingreso un caracter valido - Ingrese el nombre y apellido:\t");

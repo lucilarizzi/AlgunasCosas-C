@@ -60,6 +60,30 @@ int cargarIngresos(eIngresoyEgreso ingresos [], int tamanio)
     return 1;
    }
 
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
+
+int cargarEgresos(eIngresoyEgreso ingresos [], int tamanio)
+{
+    int i;
+    int marca[]= {1,1,2,3,2,2,3,4,1,1};
+    float importe[]= {100,200,100,300,100,100,200,200,100,100};
+    for (i=0 ; i<tamanio;i++)
+    {
+    ingresos[i].marca=marca[i];
+    ingresos[i].totalPagado=importe[i];
+    ingresos[i].status=2;
+    }
+
+
+    return 1;
+   }
+
 /** \brief recibir ingreso
  *
  * \param ARRAY ESTRUCTURA de ingresos
@@ -457,23 +481,27 @@ void buscarPropySusPatentes (ePropietario propieta [] , eIngresoyEgreso ingresos
     int flag2=0;
 
     listadoDePropietario(propieta, CantPropietarios, flag );
-    printf("\n Ingrese el numero de id del propietario que desea ver las patentes");
+    printf("\n \nIngrese el numero de id del propietario que desea ver las patentes: ");
     scanf("%d", &auxProp);
 
      for (i=0; i < CantPropietarios; i++)
      {
 
-         if (propieta[i].idPropietario  ==auxProp)
+         if (propieta[i].idPropietario==auxProp)
          {
              flag2=1;
+             printf("\n--Patentes del propietario--\n");
              for (j=0; j<CantLugares; j++)
                 {
                     if (ingresos[j].idPropietario== propieta[i].idPropietario)
                     {
-                        printf("\n la patente del propietario es %s", ingresos[j].patente);
+
+                        printf("\n\t %s", ingresos[j].patente);
+
 
                     }
                 }//fin for J
+             printf("\n----------------------------");
          } //ir propieda.idprop
 
      }
@@ -545,22 +573,25 @@ void autosPorPatente(ePropietario propieta [] , eIngresoyEgreso ingresos [] ,int
                } //if
             }//for j
      }// for i
-
+     printf("\n   Dominio   idProp     Nom y Ap: \t Direccion \te:");
+     printf("\n   -------   -------    ----------       ----------   -----");
     for (i=0; i <CantLugares; i++)
      {
          if (auxIngreso[i].status==1)
             {
-            printf("\nDominio: %s",auxIngreso[i].patente);
-            for (j=0; j<CantPropietarios; j++)
+
+          for (j=0; j<CantPropietarios; j++)
             {
                if(auxIngreso[i].idPropietario==propieta[j].idPropietario && auxIngreso[i].status==1 && propieta[j].status==1)
                {
-                  showOneClient(propieta[j]);
-                  printf("\n");
+                  printf("\n   %s \t%d \t%8s \t %8s \t %d" ,auxIngreso[i].patente  , propieta[j].idPropietario , propieta[j].nombreyApellido , propieta[j].direccion, propieta[j].status);
+
+                //  printf("\n");
                } //if
             }//for j
             }
      }// for i
+     printf("\n   ---------------------------------------------------------");
 
 
 
